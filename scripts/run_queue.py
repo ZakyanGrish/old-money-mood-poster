@@ -185,9 +185,10 @@ def main(argv=None) -> int:
             _write_status("dry-run", target.get("id") if target else None, fresh_left, now)
             return 0
         if target is None:
-            print("Nothing fresh and nothing eligible to recycle. Posting nothing this run.")
-            print("::low-queue::%d" % fresh_left)
-            _write_status("skipped", None, fresh_left, now)
+            print("Nothing due right now (fresh reserve: %d). Posting nothing this run." % fresh_left)
+            if fresh_left <= LOW_QUEUE_THRESHOLD:
+                print("::low-queue::%d" % fresh_left)
+            _write_status("idle", None, fresh_left, now)
             return 0
 
     print("mode=%s id=%s type=%s" % (mode, target.get("id"), target.get("type")))
