@@ -1,10 +1,13 @@
 name: Scheduled poster (Old Money Mood)
 
 # UTC. GitHub cron has no daylight-saving, so ET drifts 1h in winter (acceptable).
-#   16:30 UTC = 12:30 ET (summer) / 11:30 ET (winter)
-#   23:30 UTC = 19:30 ET (summer) / 18:30 ET (winter)
+# 3 posts/day, targeting ~2 Reels + 1 still (queue is stocked in that ratio):
+#   13:00 UTC = 09:00 ET summer / 08:00 ET winter
+#   16:30 UTC = 12:30 ET summer / 11:30 ET winter
+#   23:30 UTC = 19:30 ET summer / 18:30 ET winter
 on:
   schedule:
+    - cron: "0 13 * * *"
     - cron: "30 16 * * *"
     - cron: "30 23 * * *"
   workflow_dispatch:

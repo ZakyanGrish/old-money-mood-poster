@@ -45,16 +45,31 @@ def _cloudinary():
     return cloudinary
 
 
-def _upload(path: Path, folder: str = "omm") -> str:
+def _upload(path: Path, folder: str = "omm", attempts: int = 4) -> str:
+    import time as _time
+
     cloudinary = _cloudinary()
     from cloudinary import uploader  # noqa: WPS433
+    from cloudinary.exceptions import Error as CloudinaryError  # noqa: WPS433
 
     is_video = path.suffix.lower() in VIDEO_EXT
     kwargs = dict(folder=folder, resource_type="video" if is_video else "image", overwrite=False)
-    if is_video and path.stat().st_size > 90 * 1024 * 1024:
-        res = uploader.upload_large(str(path), chunk_size=20 * 1024 * 1024, **kwargs)
-    else:
-        res = uploader.upload(str(path), **kwargs)
+    big = is_video and path.stat().st_size > 90 * 1024 * 1024
+
+    res = None
+    for i in range(1, attempts + 1):
+        try:
+            if big:
+                res = uploader.upload_large(str(path), chunk_size=20 * 1024 * 1024, **kwargs)
+            else:
+                res = uploader.upload(str(path), **kwargs)
+            break
+        except CloudinaryError as e:
+            if i == attempts:
+                raise
+            wait = 5 * i
+            print("  upload attempt %d/%d failed (%s); retrying in %ds" % (i, attempts, e, wait))
+            _time.sleep(wait)
     url = res.get("secure_url")
     if not url:
         raise SystemExit("Cloudinary upload returned no secure_url: %s" % res)
