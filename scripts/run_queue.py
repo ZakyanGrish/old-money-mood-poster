@@ -165,22 +165,24 @@ def main(argv=None) -> int:
     fresh_left = _fresh_remaining(items, now)
 
     fresh = next((it for it in items if _is_fresh_due(it, now)), None)
-    acct = None
-    client = None
-    if not args.dry_run:
-        acct = get_account(args.account)
-        client = MetaClient(acct.access_token)
+    # A client is always useful: recycle selection reads insights even on a dry run.
+    acct = get_account(args.account)
+    client = MetaClient(acct.access_token)
 
     # ---- choose what to post -------------------------------------------------
     mode = "fresh"
     target = fresh
     if target is None:
         mode = "recycle"
-        if args.dry_run:
-            print("No fresh item due. Would attempt to recycle a top past post.")
-            _write_status("skipped", None, fresh_left, now)
-            return 0
         target = _pick_recycle(items, client, now)
+        if args.dry_run:
+            if target is None:
+                print("No fresh item due; nothing eligible to recycle either.")
+            else:
+                print("No fresh item due. Would recycle:")
+                print(json.dumps(target, indent=2))
+            _write_status("dry-run", target.get("id") if target else None, fresh_left, now)
+            return 0
         if target is None:
             print("Nothing fresh and nothing eligible to recycle. Posting nothing this run.")
             print("::low-queue::%d" % fresh_left)
