@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-09-08T12:40:55.554081+00:00",
-  "action": "dry-run",
+  "checked_at": "2026-09-08T12:42:08.238479+00:00",
+  "action": "skipped",
   "item_id": null,
   "fresh_remaining": 1095,
   "low_queue": false
