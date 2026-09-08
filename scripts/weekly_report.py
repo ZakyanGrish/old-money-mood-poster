@@ -25,9 +25,19 @@ IG_USER_ID = "17841477100835322"  # Old Money Mood
 SLOTS_PER_DAY = 3
 
 
+try:
+    from zoneinfo import ZoneInfo
+    _ET = ZoneInfo("America/New_York")
+except Exception:  # pragma: no cover
+    _ET = dt.timezone(dt.timedelta(hours=-5))
+
+
 def _fmt_dt(iso: str) -> str:
     try:
-        return dt.datetime.fromisoformat(iso.replace("Z", "+00:00")).strftime("%b %d %H:%M UTC")
+        d = dt.datetime.fromisoformat(iso.replace("Z", "+00:00"))
+        if d.tzinfo is None:
+            d = d.replace(tzinfo=dt.timezone.utc)
+        return d.astimezone(_ET).strftime("%b %d %I:%M %p ET")
     except Exception:
         return iso
 
@@ -82,7 +92,7 @@ def main() -> int:
         for ts, m, reach in posts:
             cap = (m.get("caption") or "").split("\n")[0][:40]
             lines.append("| %s | %s | %s | %s | %s | [link](%s) |" % (
-                ts.strftime("%a %d"),
+                ts.astimezone(_ET).strftime("%a %d %I:%M%p").replace(" 0", " "),
                 (m.get("media_product_type") or "").title() or "Feed",
                 m.get("like_count", 0), m.get("comments_count", 0),
                 reach if reach is not None else "—",

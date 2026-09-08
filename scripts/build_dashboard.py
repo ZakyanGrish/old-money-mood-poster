@@ -195,7 +195,7 @@ a{color:var(--brass)}
   <div class="grid posts" id="posts"></div>
 
   <h2>Next up</h2>
-  <div class="card"><table id="upcoming"><thead><tr><th>When (UTC)</th><th>Caption</th></tr></thead><tbody></tbody></table></div>
+  <div class="card"><table id="upcoming"><thead><tr><th>When (ET)</th><th>Caption</th></tr></thead><tbody></tbody></table></div>
 
   <h2>Health</h2>
   <div class="card" id="health"></div>
@@ -211,7 +211,9 @@ a{color:var(--brass)}
 <script>
 const D = window.__DATA__;
 const esc = s => (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const fmt = iso => { try{ return new Date(iso).toLocaleString([], {month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"});}catch(e){return iso||"";} };
+const ET = "America/New_York";
+const fmt = iso => { try{ return new Date(iso).toLocaleString("en-US", {timeZone:ET,month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})+" ET";}catch(e){return iso||"";} };
+const fmtDay = iso => { try{ return new Date(iso).toLocaleString("en-US", {timeZone:ET,weekday:"short",month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})+" ET";}catch(e){return iso||"";} };
 const p = D.profile||{};
 document.getElementById("acct").textContent = p.name || "Old Money Mood";
 document.getElementById("sub").textContent =
@@ -257,7 +259,7 @@ document.getElementById("posts").innerHTML = (D.recent||[]).slice(0,12).map(r=>`
   </a>`).join("") || `<div class="card">No posts read from Instagram.</div>`;
 
 document.querySelector("#upcoming tbody").innerHTML = (D.upcoming||[]).map(u=>
-  `<tr><td class="num">${esc(u.when.replace("T"," ").replace("+00:00",""))}</td><td>${esc(u.caption)}</td></tr>`
+  `<tr><td class="num">${esc(fmtDay(u.when))}</td><td>${esc(u.caption)}</td></tr>`
 ).join("") || `<tr><td colspan="2">Queue empty.</td></tr>`;
 
 const sk = D.skipped_items||[];
