@@ -41,9 +41,11 @@ class MetaClient:
         if resp.status_code >= 400 or "error" in data:
             err = data.get("error", {})
             raise MetaError(
-                "Graph API error %s: %s (type=%s, code=%s, subcode=%s)"
+                "Graph API error %s on %s %s: %s (type=%s, code=%s, subcode=%s)"
                 % (
                     resp.status_code,
+                    method,
+                    path,
                     err.get("message", data),
                     err.get("type"),
                     err.get("code"),
@@ -154,7 +156,9 @@ class MetaClient:
         child_ids = []
         for url in image_urls:
             child_ids.append(
-                self._create_container(ig_user_id, image_url=url, is_carousel_item="true")
+                self._create_container(
+                    ig_user_id, image_url=url, media_type="IMAGE", is_carousel_item="true"
+                )
             )
         for cid in child_ids:
             self._wait_ready(cid, timeout_s=120, interval_s=3)
