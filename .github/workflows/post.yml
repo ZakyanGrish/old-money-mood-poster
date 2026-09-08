@@ -63,7 +63,10 @@ jobs:
           LOW=$(python -c "import json;print(json.load(open('content/status.json')).get('low_queue'))" 2>/dev/null || echo "False")
           REMAIN=$(python -c "import json;print(json.load(open('content/status.json')).get('fresh_remaining'))" 2>/dev/null || echo "?")
           if [ "$LOW" != "True" ]; then
-            echo "Fresh remaining: $REMAIN — no alert."
+            echo "Fresh remaining: $REMAIN — healthy. Closing any open queue-low issues."
+            for N in $(gh issue list --state open --label queue-low --json number --jq '.[].number'); do
+              gh issue close "$N" --comment "Queue back to $REMAIN fresh items — auto-closing."
+            done
             exit 0
           fi
           EXISTING=$(gh issue list --state open --label queue-low --json number --jq 'length')
