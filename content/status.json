@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-09-08T11:58:29.449737+00:00",
-  "action": "skipped",
-  "item_id": null,
-  "fresh_remaining": 0,
+  "checked_at": "2026-09-08T12:02:47.605054+00:00",
+  "action": "dry-run",
+  "item_id": "test-2026-09-08-armchair",
+  "fresh_remaining": 1,
   "low_queue": true
 }

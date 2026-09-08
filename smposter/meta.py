@@ -102,23 +102,30 @@ class MetaClient:
         return cid
 
     def _wait_ready(self, container_id: str, timeout_s: int = 300, interval_s: int = 5) -> None:
-        """Poll a container until it finishes processing (needed for video/Reels)."""
+        """Poll a container until it reports FINISHED.
+
+        Every container — image, carousel, video — must reach FINISHED before
+        media_publish will accept it; publishing sooner returns OAuthException
+        9007 / subcode 2207027 ("Media ID is not available").
+        """
         deadline = time.time() + timeout_s
+        last = None
         while time.time() < deadline:
             data = self._call("GET", container_id, fields="status_code,status")
-            status = data.get("status_code")
-            if status == "FINISHED":
+            last = data.get("status_code")
+            if last == "FINISHED":
                 return
-            if status == "ERROR":
+            if last == "ERROR":
                 raise MetaError("Container %s failed: %s" % (container_id, data.get("status")))
             time.sleep(interval_s)
-        raise MetaError("Container %s not ready after %ss" % (container_id, timeout_s))
+        raise MetaError("Container %s not FINISHED after %ss (last=%s)" % (container_id, timeout_s, last))
 
     def _publish(self, ig_user_id: str, creation_id: str) -> dict:
         return self._call("POST", "%s/media_publish" % ig_user_id, creation_id=creation_id)
 
     def post_image(self, ig_user_id: str, image_url: str, caption: str = "") -> dict:
         cid = self._create_container(ig_user_id, image_url=image_url, caption=caption)
+        self._wait_ready(cid, timeout_s=120, interval_s=3)
         return self._publish(ig_user_id, cid)
 
     def post_reel(
@@ -149,9 +156,12 @@ class MetaClient:
             child_ids.append(
                 self._create_container(ig_user_id, image_url=url, is_carousel_item="true")
             )
+        for cid in child_ids:
+            self._wait_ready(cid, timeout_s=120, interval_s=3)
         parent = self._create_container(
             ig_user_id, media_type="CAROUSEL", children=",".join(child_ids), caption=caption
         )
+        self._wait_ready(parent, timeout_s=120, interval_s=3)
         return self._publish(ig_user_id, parent)
 
     def post_story(
@@ -169,8 +179,7 @@ class MetaClient:
         else:
             params["video_url"] = video_url
         cid = self._create_container(ig_user_id, **params)
-        if video_url:
-            self._wait_ready(cid)
+        self._wait_ready(cid, timeout_s=300 if video_url else 120, interval_s=5 if video_url else 3)
         return self._publish(ig_user_id, cid)
 
     # ---- facebook page ----------------------------------------------------
