@@ -74,6 +74,25 @@ class MetaClient:
         )
         return (data.get("data") or [{}])[0]
 
+    def media_score(self, media_id: str) -> float:
+        """A single 'how well did this do' number for ranking past posts.
+
+        Prefers reach (from insights); falls back to likes + comments; 0 on error.
+        """
+        try:
+            data = self._call("GET", "%s/insights" % media_id, metric="reach")
+            for row in data.get("data", []):
+                vals = row.get("values") or []
+                if vals and isinstance(vals[0], dict) and "value" in vals[0]:
+                    return float(vals[0]["value"])
+        except MetaError:
+            pass
+        try:
+            d = self._call("GET", media_id, fields="like_count,comments_count")
+            return float(d.get("like_count", 0)) + float(d.get("comments_count", 0))
+        except MetaError:
+            return 0.0
+
     # ---- instagram publishing ----------------------------------------------
     def _create_container(self, ig_user_id: str, **params) -> str:
         data = self._call("POST", "%s/media" % ig_user_id, **params)

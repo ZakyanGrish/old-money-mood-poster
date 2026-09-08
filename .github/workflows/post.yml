@@ -1,17 +1,16 @@
 name: Scheduled poster (Old Money Mood)
 
-# Times are UTC. GitHub cron can run a few minutes late under load.
-# Convert your local target times to UTC and edit below.
-#   17:00 UTC = 12:00 US Eastern / 09:00 US Pacific
-#   01:00 UTC = 20:00 US Eastern / 17:00 US Pacific (previous day)
+# UTC. GitHub cron has no daylight-saving, so ET drifts 1h in winter (acceptable).
+#   16:30 UTC = 12:30 ET (summer) / 11:30 ET (winter)
+#   23:30 UTC = 19:30 ET (summer) / 18:30 ET (winter)
 on:
   schedule:
-    - cron: "0 17 * * *"
-    - cron: "0 1 * * *"
+    - cron: "30 16 * * *"
+    - cron: "30 23 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
-        description: "Show the next due item without posting"
+        description: "Show what would post without publishing"
         type: boolean
         default: false
 
@@ -21,6 +20,7 @@ concurrency:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   post:
@@ -35,18 +35,40 @@ jobs:
       - name: Install deps
         run: pip install -r requirements.txt
 
-      - name: Post next due item
+      - name: Post next item
+        id: post
         env:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
         run: |
           python scripts/run_queue.py --account oldmoneymood \
             ${{ (github.event_name == 'workflow_dispatch' && inputs.dry_run) && '--dry-run' || '' }}
 
-      - name: Commit queue state
-        if: github.event_name == 'schedule' || !inputs.dry_run
+      - name: Commit queue + status
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.dry_run) }}
         run: |
           git config user.name "poster-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/queue.json
-          git diff --staged --quiet || git commit -m "queue: mark posted [skip ci]"
+          git add content/queue.json content/status.json
+          git diff --staged --quiet || git commit -m "poster: publish + status [skip ci]"
           git push
+
+      - name: Alert if fresh content is low
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.dry_run) }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          LOW=$(python -c "import json;print(json.load(open('content/status.json')).get('low_queue'))" 2>/dev/null || echo "False")
+          REMAIN=$(python -c "import json;print(json.load(open('content/status.json')).get('fresh_remaining'))" 2>/dev/null || echo "?")
+          if [ "$LOW" != "True" ]; then
+            echo "Fresh remaining: $REMAIN — no alert."
+            exit 0
+          fi
+          EXISTING=$(gh issue list --state open --label queue-low --json number --jq 'length')
+          if [ "$EXISTING" != "0" ]; then
+            echo "Low-queue issue already open."
+            exit 0
+          fi
+          gh label create queue-low --color FBCA04 --description "Poster queue needs fresh content" 2>/dev/null || true
+          gh issue create --label queue-low \
+            --title "Poster queue is low — add fresh content" \
+            --body "Only $REMAIN fresh item(s) left in \`content/queue.json\`. Until you add more, the poster is recycling top past posts (30-day cooldown). Start a session to top up the queue."
