@@ -46,13 +46,19 @@ jobs:
           python scripts/run_queue.py --account oldmoneymood \
             ${{ (github.event_name == 'workflow_dispatch' && inputs.dry_run) && '--dry-run' || '' }}
 
-      - name: Commit queue + status
+      - name: Rebuild dashboard
+        if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.dry_run) }}
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+        run: python scripts/build_dashboard.py || true
+
+      - name: Commit queue + status + dashboard
         if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.dry_run) }}
         run: |
           git config user.name "poster-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/queue.json content/status.json
-          git diff --staged --quiet || git commit -m "poster: publish + status [skip ci]"
+          git add content/queue.json content/status.json docs/index.html
+          git diff --staged --quiet || git commit -m "poster: publish + status + dashboard [skip ci]"
           git push
 
       - name: Alert if fresh content is low
