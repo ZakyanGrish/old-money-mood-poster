@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-09-08T12:30:40.111056+00:00",
-  "action": "posted",
-  "item_id": "test-story-2026-09-08b",
-  "fresh_remaining": 0,
-  "low_queue": true
+  "checked_at": "2026-09-08T12:40:55.554081+00:00",
+  "action": "dry-run",
+  "item_id": null,
+  "fresh_remaining": 1095,
+  "low_queue": false
 }

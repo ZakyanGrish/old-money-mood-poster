@@ -35,6 +35,7 @@ STATUS_PATH = ROOT / "content" / "status.json"
 
 RECYCLE_COOLDOWN_DAYS = 30   # don't re-post the same media within this window
 LOW_QUEUE_THRESHOLD = 3      # fresh items at or below this -> workflow raises an alert
+MAX_FAILS = 3               # after this many failed attempts, skip an item and move on
 POSTABLE = ("reel", "image", "carousel")  # stories are ephemeral, never recycled
 
 
@@ -199,9 +200,21 @@ def main(argv=None) -> int:
     try:
         res = _post_item(client, acct.ig_user_id, target)
     except (MetaError, KeyError) as e:
-        print("POST FAILED id=%s: %s" % (target.get("id"), e))
-        _write_status("failed", target.get("id"), fresh_left, now)
-        return 1
+        target["fail_count"] = int(target.get("fail_count", 0)) + 1
+        target["last_error"] = str(e)
+        give_up = target["fail_count"] >= MAX_FAILS
+        if give_up:
+            # Don't let one bad item wedge a 365-day queue: mark it done and move on.
+            target["posted_at"] = now.isoformat()
+            target["skipped"] = True
+        if mode == "recycle" and give_up:
+            items.append(target)
+        QUEUE_PATH.write_text(json.dumps(items, indent=2) + "\n")
+        _write_status("skipped-bad" if give_up else "failed", target.get("id"), fresh_left, now)
+        print("POST FAILED id=%s (attempt %d/%d)%s: %s" % (
+            target.get("id"), target["fail_count"], MAX_FAILS,
+            " — giving up, skipping" if give_up else " — will retry next run", e))
+        return 0 if give_up else 1
 
     target["posted_at"] = now.isoformat()
     target["result_id"] = res.get("id")
