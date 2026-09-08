@@ -58,6 +58,12 @@ def _upload(path: Path, folder: str = "omm") -> str:
     url = res.get("secure_url")
     if not url:
         raise SystemExit("Cloudinary upload returned no secure_url: %s" % res)
+    if not is_video:
+        # Instagram only accepts JPEG for photos. Cloudinary converts on delivery
+        # when the URL extension is .jpg, so coerce it regardless of source format.
+        base, _, _ext = url.rpartition(".")
+        if base:
+            url = base + ".jpg"
     return url
 
 
