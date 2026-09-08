@@ -1,0 +1,7 @@
+.env
+# accounts.json IS committed on purpose — it contains only Old Money Mood,
+# and IG user / Page IDs are not secrets. The token lives in GitHub Secrets.
+__pycache__/
+*.pyc
+.venv/
+venv/

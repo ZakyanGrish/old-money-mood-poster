@@ -1,0 +1,12 @@
+{
+  "brand-a": {
+    "ig_user_id": "17841400000000000",
+    "fb_page_id": "1000000000000000",
+    "token_env": null
+  },
+  "brand-b": {
+    "ig_user_id": "17841400000000001",
+    "fb_page_id": null,
+    "token_env": "META_TOKEN_BRAND_B"
+  }
+}

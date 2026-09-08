@@ -1,0 +1,52 @@
+name: Scheduled poster (Old Money Mood)
+
+# Times are UTC. GitHub cron can run a few minutes late under load.
+# Convert your local target times to UTC and edit below.
+#   17:00 UTC = 12:00 US Eastern / 09:00 US Pacific
+#   01:00 UTC = 20:00 US Eastern / 17:00 US Pacific (previous day)
+on:
+  schedule:
+    - cron: "0 17 * * *"
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Show the next due item without posting"
+        type: boolean
+        default: false
+
+concurrency:
+  group: poster
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Post next due item
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+        run: |
+          python scripts/run_queue.py --account oldmoneymood \
+            ${{ (github.event_name == 'workflow_dispatch' && inputs.dry_run) && '--dry-run' || '' }}
+
+      - name: Commit queue state
+        if: github.event_name == 'schedule' || !inputs.dry_run
+        run: |
+          git config user.name "poster-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/queue.json
+          git diff --staged --quiet || git commit -m "queue: mark posted [skip ci]"
+          git push
