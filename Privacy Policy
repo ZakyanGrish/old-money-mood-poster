@@ -1,0 +1,22 @@
+Last updated: 9 September 2026
+
+This Privacy Policy describes how the "Old Money Mood Social Publisher" (the "Tool") handles information. The Tool is a private automation script operated by its owner to publish content to the owner's own social media accounts. It is not a consumer product and has no registered users other than the owner.
+
+Information the Tool uses
+Access tokens for social media accounts (Instagram, Facebook, TikTok) that the owner has personally connected. These authorize the Tool to publish posts on those accounts.
+Content to be published — video files, images, captions, and the posting schedule, all supplied by the owner.
+Basic publishing results returned by each platform's API, such as the identifier and link of a created post, and public engagement counts (likes, comments, reach) for the owner's own posts.
+Information the Tool does NOT collect
+The Tool does not collect, request, or store personal information about any other individual. It has no login for third parties, no analytics on visitors, no advertising, and no tracking cookies. It does not access followers' data, private messages, or any account other than the owner's own connected accounts.
+
+How information is stored
+Access tokens are held as encrypted secrets in the owner's GitHub Actions environment. Content and schedule data are stored in the owner's private media store and source repository. Nothing is sold, shared, or transferred to third parties. Data is used solely to publish the owner's posts.
+
+Third-party platforms
+When the Tool publishes a post, the content is sent to the relevant platform (Meta / Instagram, Facebook, or TikTok) and is thereafter governed by that platform's own terms and privacy policy.
+
+Retention and deletion
+Tokens and content remain until the owner removes them or revokes access from the platform. The owner can revoke the Tool's access at any time from the platform's app settings, which immediately stops all publishing.
+
+Contact
+Questions: grishzakyan@gmail.com
