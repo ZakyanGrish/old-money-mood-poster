@@ -30,7 +30,11 @@ from smposter.config import load_env  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 QUEUE_PATH = ROOT / "content" / "queue.json"
 
-SLOTS_UTC = [(13, 0), (16, 30), (23, 30)]     # 3/day: ~9:00, 12:30, 19:30 ET (summer)
+# 5 daily UTC slots (~8:00 / 11:30 / 14:30 / 18:00 / 21:00 ET in summer).
+# Each day fills MIN_PER_DAY..MAX_PER_DAY of them, chosen at build time.
+SLOTS_UTC = [(12, 0), (15, 30), (18, 30), (22, 0), (1, 0)]
+MIN_PER_DAY = 3
+MAX_PER_DAY = 5
 SEED = 20260908
 HASHTAGS = "#oldmoney #oldmoneyaesthetic #quietluxury #oldmoneystyle #timelesselegance"
 
@@ -104,7 +108,14 @@ def build(days: int) -> list:
         raise SystemExit("No videos found in Cloudinary.")
     rng = random.Random(SEED)
 
-    total = days * len(SLOTS_UTC)
+    # How many posts each day, and which of the 5 slots they land in.
+    day_slots = []
+    for _ in range(days):
+        k = rng.randint(MIN_PER_DAY, MAX_PER_DAY)
+        slots = sorted(rng.sample(range(len(SLOTS_UTC)), k))
+        day_slots.append(slots)
+    total = sum(len(s) for s in day_slots)
+
     order: list = []
     while len(order) < total:
         deck = vids[:]
@@ -115,30 +126,36 @@ def build(days: int) -> list:
     start = (dt.datetime.now(dt.timezone.utc) + dt.timedelta(days=1)).date()
     items = []
     seen_pass: dict = {}
-    for i, v in enumerate(order):
-        day = i // len(SLOTS_UTC)
-        h, m = SLOTS_UTC[i % len(SLOTS_UTC)]
-        when = dt.datetime.combine(start + dt.timedelta(days=day), dt.time(h, m), dt.timezone.utc)
-        pid = v["public_id"]
-        seen_pass[pid] = seen_pass.get(pid, 0) + 1
-        cap = caption_from_public_id(pid)
-        items.append({
-            "id": "sched-%s-%d" % (when.date().isoformat(), i % len(SLOTS_UTC) + 1),
-            "type": "reel",
-            "media_url": v["secure_url"],
-            "caption": "%s\n\n%s" % (cap, HASHTAGS),
-            "not_before": when.isoformat(),
-            "posted_at": None,
-            "result_id": None,
-            "source_public_id": pid,
-            "pass": seen_pass[pid],
-        })
+    idx = 0
+    for day, slots in enumerate(day_slots):
+        for slot in slots:
+            v = order[idx]
+            idx += 1
+            h, m = SLOTS_UTC[slot]
+            when = dt.datetime.combine(
+                start + dt.timedelta(days=day), dt.time(h, m), dt.timezone.utc
+            )
+            pid = v["public_id"]
+            seen_pass[pid] = seen_pass.get(pid, 0) + 1
+            cap = caption_from_public_id(pid)
+            items.append({
+                "id": "sched-%s-%d" % (when.date().isoformat(), slot + 1),
+                "type": "reel",
+                "media_url": v["secure_url"],
+                "caption": "%s\n\n%s" % (cap, HASHTAGS),
+                "not_before": when.isoformat(),
+                "posted_at": None,
+                "result_id": None,
+                "source_public_id": pid,
+                "pass": seen_pass[pid],
+            })
+    items.sort(key=lambda it: it["not_before"])
     return items
 
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--days", type=int, default=365)
+    ap.add_argument("--days", type=int, default=1825)  # 5 years
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args(argv)
 
@@ -153,11 +170,15 @@ def main(argv=None) -> int:
 
     uniq = len({it["source_public_id"] for it in sched})
     print("videos in library:      %d" % uniq)
-    print("scheduled items:        %d  (%d days x %d/day)" % (len(sched), args.days, len(SLOTS_UTC)))
+    print("scheduled items:        %d  (%d days, %d-%d/day)" % (
+        len(sched), args.days, MIN_PER_DAY, MAX_PER_DAY))
+    print("avg posts/day:          %.2f" % (len(sched) / args.days))
     print("first post not_before:  %s" % sched[0]["not_before"])
     print("last  post not_before:  %s" % sched[-1]["not_before"])
-    print("avg re-airs per video:  %.1f" % (len(sched) / uniq))
+    print("avg re-airs per video:  %.1f  (~every %d days)" % (
+        len(sched) / uniq, int(args.days / (len(sched) / uniq))))
     print("kept (already posted):  %d" % len(kept))
+    print("queue.json size est:    ~%.1f MB" % (len(sched) * 360 / 1e6))
     print("\nfirst 6:")
     for it in sched[:6]:
         print("  %s  %s  | %s" % (it["not_before"], it["id"], it["caption"].split("\n")[0][:60]))
