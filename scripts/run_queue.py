@@ -36,6 +36,7 @@ STATUS_PATH = ROOT / "content" / "status.json"
 RECYCLE_COOLDOWN_DAYS = 30   # don't re-post the same media within this window
 LOW_QUEUE_THRESHOLD = 3      # fresh items at or below this -> workflow raises an alert
 MAX_FAILS = 3               # after this many failed attempts, skip an item and move on
+CROSSPOST_FB = True         # also publish reels/images to the linked Facebook Page
 POSTABLE = ("reel", "image", "carousel")  # stories are ephemeral, never recycled
 
 
@@ -219,6 +220,24 @@ def main(argv=None) -> int:
 
     target["posted_at"] = now.isoformat()
     target["result_id"] = res.get("id")
+
+    # ---- best-effort Facebook Page crosspost (never fails the run) --------
+    if CROSSPOST_FB and acct.fb_page_id and (target.get("type") or "").lower() in ("reel", "image"):
+        try:
+            ptoken = client.resolve_page_token(acct.fb_page_id)
+            if (target["type"] or "").lower() == "reel":
+                fb = client.page_post_video(
+                    acct.fb_page_id, ptoken, target["media_url"], target.get("caption", ""))
+            else:
+                fb = client.page_post_photo(
+                    acct.fb_page_id, ptoken, target["media_url"], target.get("caption", ""))
+            target["fb_result_id"] = fb.get("id")
+            target.pop("fb_error", None)
+            print("  + Facebook Page: %s" % fb.get("id"))
+        except (MetaError, KeyError) as e:
+            target["fb_error"] = str(e)
+            print("  ! Facebook crosspost failed (Instagram post is live): %s" % e)
+
     if mode == "recycle":
         items.append(target)  # recycle clone is a new record
     fresh_left = _fresh_remaining(items, now)

@@ -187,6 +187,34 @@ class MetaClient:
         return self._publish(ig_user_id, cid)
 
     # ---- facebook page ----------------------------------------------------
+    def resolve_page_token(self, page_id: str) -> str:
+        """Return a Page access token for page_id.
+
+        If this client's token is a User token, look up the derived Page token
+        (which never expires when the User token was long-lived). If it's already
+        a Page token, use it as-is.
+        """
+        try:
+            for p in self.list_pages():
+                if str(p.get("id")) == str(page_id) and p.get("access_token"):
+                    return p["access_token"]
+        except MetaError:
+            pass
+        return self.token
+
+    def page_post_video(self, page_id: str, page_token: str, video_url: str, caption: str = "") -> dict:
+        """Publish a video to the Page feed (also eligible for Facebook Reels/Watch).
+
+        Facebook pulls the file from video_url; processing is async, so the
+        returned id may not be viewable for a minute.
+        """
+        params = {"file_url": video_url, "description": caption, "access_token": page_token}
+        resp = self.session.post("%s/%s/videos" % (self.base, page_id), params=params, timeout=120)
+        data = resp.json()
+        if resp.status_code >= 400 or "error" in data:
+            raise MetaError("Page video failed: %s" % data.get("error", data))
+        return data
+
     def page_post_text(self, page_id: str, page_token: str, message: str, link: Optional[str] = None) -> dict:
         params = {"message": message, "access_token": page_token}
         if link:
