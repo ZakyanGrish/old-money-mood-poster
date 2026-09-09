@@ -115,7 +115,7 @@ def main() -> int:
     unposted = [it for it in sched if not it.get("posted_at")]
     skipped = [it for it in q if it.get("skipped")]
     failing = [it for it in q if it.get("fail_count") and not it.get("posted_at")]
-    days_left = len(unposted) // SLOTS_PER_DAY
+    days_left = len({it["not_before"][:10] for it in unposted if it.get("not_before")})
     next_due = min((it["not_before"] for it in unposted if it.get("not_before")), default=None)
     wk_iso = (now - dt.timedelta(days=7)).isoformat()
     fb_ok = sum(1 for it in q if it.get("fb_result_id") and (it.get("posted_at") or "") >= wk_iso)
