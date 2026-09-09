@@ -117,10 +117,15 @@ def main() -> int:
     failing = [it for it in q if it.get("fail_count") and not it.get("posted_at")]
     days_left = len(unposted) // SLOTS_PER_DAY
     next_due = min((it["not_before"] for it in unposted if it.get("not_before")), default=None)
+    wk_iso = (now - dt.timedelta(days=7)).isoformat()
+    fb_ok = sum(1 for it in q if it.get("fb_result_id") and (it.get("posted_at") or "") >= wk_iso)
+    fb_err = sum(1 for it in q if it.get("fb_error") and (it.get("posted_at") or "") >= wk_iso)
 
     lines.append("### Queue health")
     lines.append("")
     lines.append("- **Runway:** %d posts queued ≈ **%d days** of content" % (len(unposted), days_left))
+    lines.append("- **Facebook crossposts (7d):** %d ok%s" % (
+        fb_ok, (", **%d failed**" % fb_err) if fb_err else ""))
     if next_due:
         lines.append("- **Next scheduled:** %s" % _fmt_dt(next_due))
     lines.append("- **Skipped (bad media, gave up):** %d" % len(skipped))
