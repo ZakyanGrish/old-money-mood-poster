@@ -1,19 +1,22 @@
 name: Scheduled poster (Old Money Mood)
 
 # UTC. GitHub cron has no daylight-saving, so ET drifts 1h in winter (acceptable).
-# 5 daily slots; the schedule fills 3-5 of them per day (avg ~4).
+# GitHub's free-tier scheduled runs are also often 5-40 min late and occasionally
+# skipped under load; the queue's not_before gate means a skipped slot's reel just
+# posts at the next run, so content is never lost — only timing drifts.
+# 5 daily slots, all inside the same ET calendar day; the schedule fills 3-5/day.
 #   12:00 UTC = 08:00 ET summer / 07:00 ET winter
-#   15:30 UTC = 11:30 ET summer / 10:30 ET winter
-#   18:30 UTC = 14:30 ET summer / 13:30 ET winter
-#   22:00 UTC = 18:00 ET summer / 17:00 ET winter
-#   01:00 UTC = 21:00 ET summer / 20:00 ET winter (previous day)
+#   14:30 UTC = 10:30 ET summer / 09:30 ET winter
+#   17:00 UTC = 13:00 ET summer / 12:00 ET winter
+#   20:00 UTC = 16:00 ET summer / 15:00 ET winter
+#   23:00 UTC = 19:00 ET summer / 18:00 ET winter
 on:
   schedule:
     - cron: "0 12 * * *"
-    - cron: "30 15 * * *"
-    - cron: "30 18 * * *"
-    - cron: "0 22 * * *"
-    - cron: "0 1 * * *"
+    - cron: "30 14 * * *"
+    - cron: "0 17 * * *"
+    - cron: "0 20 * * *"
+    - cron: "0 23 * * *"
   workflow_dispatch:
     inputs:
       dry_run:

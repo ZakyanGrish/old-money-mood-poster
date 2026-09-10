@@ -30,9 +30,10 @@ from smposter.config import load_env  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 QUEUE_PATH = ROOT / "content" / "queue.json"
 
-# 5 daily UTC slots (~8:00 / 11:30 / 14:30 / 18:00 / 21:00 ET in summer).
-# Each day fills MIN_PER_DAY..MAX_PER_DAY of them, chosen at build time.
-SLOTS_UTC = [(12, 0), (15, 30), (18, 30), (22, 0), (1, 0)]
+# 5 daily UTC slots, all inside the same US-Eastern calendar day
+# (~8:00 AM / 10:30 AM / 1:00 PM / 4:00 PM / 7:00 PM ET in summer; one hour
+# earlier in winter). Each day fills MIN_PER_DAY..MAX_PER_DAY of them.
+SLOTS_UTC = [(12, 0), (14, 30), (17, 0), (20, 0), (23, 0)]
 MIN_PER_DAY = 3
 MAX_PER_DAY = 5
 SEED = 20260908
@@ -102,11 +103,12 @@ def caption_from_public_id(pid: str) -> str:
     return s
 
 
-def build(days: int) -> list:
+def build(days: int, recent_pids: set = frozenset()) -> list:
     vids = fetch_videos()
     if not vids:
         raise SystemExit("No videos found in Cloudinary.")
-    rng = random.Random(SEED)
+    # Reseed per build date so a regen isn't the same order as last time.
+    rng = random.Random(SEED + int(dt.datetime.now(dt.timezone.utc).strftime("%Y%m%d")))
 
     # How many posts each day, and which of the 5 slots they land in.
     day_slots = []
@@ -117,29 +119,39 @@ def build(days: int) -> list:
     total = sum(len(s) for s in day_slots)
 
     order: list = []
-    while len(order) < total:
+    while len(order) < total + len(vids):        # + one deck of buffer for skip-forward
         deck = vids[:]
         rng.shuffle(deck)
         order.extend(deck)
-    order = order[:total]
 
-    start = (dt.datetime.now(dt.timezone.utc) + dt.timedelta(days=1)).date()
+    # Start today (UTC): the earliest slot is 12:00 UTC, so if this runs before
+    # noon the schedule still covers today; otherwise today's early slots simply
+    # sit in the past and are skipped by the not_before gate.
+    now = dt.datetime.now(dt.timezone.utc)
+    start = now.date()
     items = []
     seen_pass: dict = {}
     idx = 0
     for day, slots in enumerate(day_slots):
         for slot in slots:
-            v = order[idx]
-            idx += 1
             h, m = SLOTS_UTC[slot]
             when = dt.datetime.combine(
                 start + dt.timedelta(days=day), dt.time(h, m), dt.timezone.utc
             )
+            if when <= now:                       # don't schedule a slot already past
+                continue
+            # Skip forward past any video posted in the last ~3 weeks, so a regen
+            # right after some test posts doesn't re-air them the next morning.
+            while day < 21 and idx + 1 < len(order) and order[idx]["public_id"] in recent_pids:
+                idx += 1
+            v = order[min(idx, len(order) - 1)]
+            idx += 1
             pid = v["public_id"]
             seen_pass[pid] = seen_pass.get(pid, 0) + 1
             cap = caption_from_public_id(pid)
             items.append({
-                "id": "sched-%s-%d" % (when.date().isoformat(), slot + 1),
+                # timestamp id: globally unique, never collides with earlier posted ids
+                "id": "sched-%s" % when.strftime("%Y%m%dT%H%M"),
                 "type": "reel",
                 "media_url": v["secure_url"],
                 "caption": "%s\n\n%s" % (cap, HASHTAGS),
@@ -165,7 +177,15 @@ def main(argv=None) -> int:
     if live_sched:
         print("Note: %d unposted sched-* items already in queue; they will be replaced." % len(live_sched))
 
-    sched = build(args.days)
+    cutoff = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=21)).isoformat()
+    recent_pids = {
+        it["source_public_id"] for it in kept
+        if it.get("source_public_id") and (it.get("posted_at") or "") >= cutoff
+    }
+    if recent_pids:
+        print("Note: %d recently-posted videos held back from the first 3 weeks." % len(recent_pids))
+
+    sched = build(args.days, recent_pids)
     new_queue = kept + sched
 
     uniq = len({it["source_public_id"] for it in sched})
