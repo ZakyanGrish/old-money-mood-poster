@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="refresh" content="900">
+<meta http-equiv="refresh" content="3600">
 <title>Old Money Mood Ledger</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -218,7 +218,7 @@
 
   var f0=D.profile.followers_count;
   document.getElementById("handle").textContent="@"+D.profile.username;
-  document.getElementById("dateline").textContent="Refreshed "+dLong(D.generated_at)+" ET · updates several times a day";
+  document.getElementById("dateline").textContent="Refreshed "+dLong(D.generated_at)+" ET · refreshed daily, and right away on any error";
 
   // alert banner
   var st=D.status||{}, recentErr=(D.activity||[]).slice(-30).filter(function(a){return a.action==="failed"||a.action==="skipped-bad";});
@@ -291,7 +291,7 @@
     '<div><span>Reserve&nbsp;&nbsp;</span><b>'+nf(st.fresh_remaining)+' reels · '+nf(D.engine.days_left)+' days</b></div>'+
     '<div><span>Follower log&nbsp;&nbsp;</span><b>'+((D.series&&D.series.length)||0)+' day(s)</b></div>';
 
-  document.getElementById("footer").textContent="Rebuilt automatically on every posting run (several times a day) from the Instagram Graph API and the posting queue.";
+  document.getElementById("footer").textContent="Rebuilt once a day (and immediately on any failure) from the Instagram Graph API and the posting queue.";
 })();
 </script>
 </body>
