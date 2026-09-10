@@ -24,10 +24,13 @@ import json
 import sys
 from pathlib import Path
 
+import requests
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from smposter.config import get_account  # noqa: E402
 from smposter.meta import MetaClient, MetaError  # noqa: E402
+from smposter.youtube import YouTubeClient, YouTubeError  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 QUEUE_PATH = ROOT / "content" / "queue.json"
@@ -37,6 +40,7 @@ RECYCLE_COOLDOWN_DAYS = 30   # don't re-post the same media within this window
 LOW_QUEUE_THRESHOLD = 3      # fresh items at or below this -> workflow raises an alert
 MAX_FAILS = 3               # after this many failed attempts, skip an item and move on
 CROSSPOST_FB = True         # also publish reels/images to the linked Facebook Page
+CROSSPOST_YT = True         # also upload reels to YouTube as Shorts (needs YOUTUBE_* env)
 POSTABLE = ("reel", "image", "carousel")  # stories are ephemeral, never recycled
 
 
@@ -237,6 +241,29 @@ def main(argv=None) -> int:
         except (MetaError, KeyError) as e:
             target["fb_error"] = str(e)
             print("  ! Facebook crosspost failed (Instagram post is live): %s" % e)
+
+    # ---- best-effort YouTube Shorts crosspost (never fails the run) -------
+    if CROSSPOST_YT and (target.get("type") or "").lower() == "reel":
+        yt = YouTubeClient.from_env()
+        if yt is None:
+            print("  · YouTube not configured (no YOUTUBE_* env); skipping")
+        else:
+            try:
+                cap = target.get("caption", "") or "Old Money Mood"
+                title = cap.split("\n")[0][:90]
+                tags = [t.lstrip("#") for t in cap.split() if t.startswith("#")]
+                r = yt.upload(
+                    target["media_url"],
+                    title=title,
+                    description=cap + "\n\n#Shorts",
+                    tags=tags,
+                )
+                target["yt_result_id"] = r.get("id")
+                target.pop("yt_error", None)
+                print("  + YouTube: https://youtu.be/%s" % r.get("id"))
+            except (YouTubeError, KeyError, requests.RequestException) as e:
+                target["yt_error"] = str(e)
+                print("  ! YouTube crosspost failed (Instagram post is live): %s" % e)
 
     if mode == "recycle":
         items.append(target)  # recycle clone is a new record
