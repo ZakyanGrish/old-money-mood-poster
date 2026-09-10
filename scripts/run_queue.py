@@ -144,12 +144,16 @@ def _pick_recycle(items: list, client: MetaClient, now: dt.datetime):
     return clone
 
 
-def _write_status(action: str, item_id, fresh_remaining: int, now: dt.datetime) -> None:
+ACTIVITY_PATH = ROOT / "content" / "activity.json"
+ACTIVITY_CAP = 400
+
+
+def _write_status(action: str, item_id, fresh_remaining: int, now: dt.datetime, detail: str = "") -> None:
     STATUS_PATH.write_text(
         json.dumps(
             {
                 "checked_at": now.isoformat(),
-                "action": action,           # posted | recycled | skipped | failed
+                "action": action,           # posted | recycled | idle | skipped | failed | skipped-bad
                 "item_id": item_id,
                 "fresh_remaining": fresh_remaining,
                 "low_queue": fresh_remaining <= LOW_QUEUE_THRESHOLD,
@@ -158,6 +162,13 @@ def _write_status(action: str, item_id, fresh_remaining: int, now: dt.datetime) 
         )
         + "\n"
     )
+    # append-only activity log the dashboard renders (errors and changes included)
+    try:
+        log = json.loads(ACTIVITY_PATH.read_text()) if ACTIVITY_PATH.exists() else []
+    except (ValueError, OSError):
+        log = []
+    log.append({"t": now.isoformat(), "action": action, "item_id": item_id, "detail": detail})
+    ACTIVITY_PATH.write_text(json.dumps(log[-ACTIVITY_CAP:], indent=1) + "\n")
 
 
 def main(argv=None) -> int:
@@ -216,7 +227,8 @@ def main(argv=None) -> int:
         if mode == "recycle" and give_up:
             items.append(target)
         QUEUE_PATH.write_text(json.dumps(items, indent=2) + "\n")
-        _write_status("skipped-bad" if give_up else "failed", target.get("id"), fresh_left, now)
+        _write_status("skipped-bad" if give_up else "failed", target.get("id"), fresh_left, now,
+                      detail=str(e)[:240])
         print("POST FAILED id=%s (attempt %d/%d)%s: %s" % (
             target.get("id"), target["fail_count"], MAX_FAILS,
             " — giving up, skipping" if give_up else " — will retry next run", e))
@@ -269,7 +281,14 @@ def main(argv=None) -> int:
         items.append(target)  # recycle clone is a new record
     fresh_left = _fresh_remaining(items, now)
     QUEUE_PATH.write_text(json.dumps(items, indent=2) + "\n")
-    _write_status("posted" if mode == "fresh" else "recycled", target.get("id"), fresh_left, now)
+    reached = ["IG"] + (["FB"] if target.get("fb_result_id") else []) + (["YT"] if target.get("yt_result_id") else [])
+    miss = []
+    if target.get("fb_error"):
+        miss.append("FB failed: " + target["fb_error"][:120])
+    if target.get("yt_error"):
+        miss.append("YT failed: " + target["yt_error"][:120])
+    detail = "→ " + "+".join(reached) + ("  |  " + "; ".join(miss) if miss else "")
+    _write_status("posted" if mode == "fresh" else "recycled", target.get("id"), fresh_left, now, detail=detail)
 
     print("Published id=%s -> media %s  (fresh remaining: %d)" % (
         target.get("id"), res.get("id"), fresh_left))

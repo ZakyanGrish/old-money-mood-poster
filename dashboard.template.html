@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="900">
+<title>Old Money Mood Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ground:#ECE7DA; --surface:#E4DDCB; --ink:#22332A; --ink-dim:#6C776B;
+    --brass:#8C6C2C; --brass-soft:#B79A5E; --line:#CEC7B2; --band:#8C6C2C22;
+    --ok:#4E7A44; --warn:#9A6A2A; --bad:#A0492F;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --ground:#101E17; --surface:#172A20; --ink:#E9E1CE; --ink-dim:#8F9C89;
+    --brass:#C6A461; --brass-soft:#7E6A3C; --line:#283E33; --band:#C6A46126;
+    --ok:#8FB079; --warn:#CB9C56; --bad:#CB6F56;
+  }}
+  :root[data-theme="dark"]{
+    --ground:#101E17; --surface:#172A20; --ink:#E9E1CE; --ink-dim:#8F9C89;
+    --brass:#C6A461; --brass-soft:#7E6A3C; --line:#283E33; --band:#C6A46126;
+    --ok:#8FB079; --warn:#CB9C56; --bad:#CB6F56;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--ground); color:var(--ink);
+    font-family:"Newsreader",Georgia,serif; font-size:17px; line-height:1.6;
+    font-optical-sizing:auto; -webkit-font-smoothing:antialiased}
+  .sheet{max-width:944px; margin:0 auto; padding:clamp(28px,5vw,64px) clamp(20px,5vw,48px) 96px}
+
+  .alert{margin:0 0 28px; padding:12px 16px; border-radius:8px; font-size:14.5px;
+    border:1px solid; font-family:"IBM Plex Mono",monospace}
+  .alert.ok{border-color:var(--line); color:var(--ink-dim)}
+  .alert.warn{border-color:var(--warn); color:var(--warn)}
+  .alert.bad{border-color:var(--bad); color:var(--bad)}
+
+  .mast{display:flex; align-items:flex-start; gap:22px; padding-bottom:18px; border-bottom:2px solid var(--brass)}
+  .monogram{flex:0 0 auto; width:64px; height:64px; border:1px solid var(--brass); border-radius:50%;
+    display:grid; place-items:center; font-family:"Cormorant Garamond",serif; font-weight:600;
+    font-size:22px; letter-spacing:.06em; color:var(--brass)}
+  .mast h1{margin:0; font-family:"Cormorant Garamond",serif; font-weight:600;
+    font-size:clamp(34px,6vw,52px); line-height:1.02; text-wrap:balance}
+  .mast .handle{font-family:"IBM Plex Mono",monospace; font-size:12.5px; letter-spacing:.06em;
+    color:var(--ink-dim); margin-top:6px}
+  .dateline{margin-top:10px; font-style:italic; color:var(--ink-dim); font-size:15px}
+
+  .strip{display:grid; grid-template-columns:repeat(4,1fr); margin:30px 0 8px;
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+  .strip .cell{padding:16px 14px 15px; border-left:1px solid var(--line)}
+  .strip .cell:first-child{border-left:0; padding-left:2px}
+  .strip .fig{font-family:"Cormorant Garamond",serif; font-weight:600; font-size:34px; line-height:1;
+    font-variant-numeric:tabular-nums}
+  .strip .fig.brass{color:var(--brass)}
+  .strip .cap{font-family:"IBM Plex Mono",monospace; font-size:10.5px; text-transform:uppercase;
+    letter-spacing:.11em; color:var(--ink-dim); margin-top:9px}
+  @media (max-width:600px){
+    .strip{grid-template-columns:repeat(2,1fr)}
+    .strip .cell{border-left:0; border-top:1px solid var(--line)}
+    .strip .cell:nth-child(odd){border-right:1px solid var(--line)}
+    .strip .cell:first-child,.strip .cell:nth-child(2){border-top:0}
+  }
+
+  section{margin-top:52px}
+  .eyebrow{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--brass); margin:0 0 4px}
+  h2{margin:0 0 16px; font-family:"Cormorant Garamond",serif; font-weight:600; font-size:27px; text-wrap:balance}
+  .note{font-style:italic; color:var(--ink-dim); font-size:15px; margin:14px 0 0}
+  .note b{font-style:normal; color:var(--ink); font-weight:500}
+
+  .chart{width:100%; height:auto; display:block}
+  .chart text{fill:var(--ink-dim); font-family:"IBM Plex Mono",monospace; font-size:10px}
+  .chart .grid{stroke:var(--line); stroke-width:1}
+  .chart .band{fill:var(--band); stroke:none}
+  .chart .exp{fill:none; stroke:var(--brass); stroke-width:2.5}
+  .chart .edge{fill:none; stroke:var(--brass-soft); stroke-width:1; stroke-dasharray:3 3}
+  .chart .meas{fill:var(--ink); stroke:var(--ground); stroke-width:2}
+  .chart .lbl{fill:var(--ink); font-weight:500}
+  .legend{display:flex; gap:18px; flex-wrap:wrap; margin-top:12px;
+    font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-dim)}
+  .legend i{display:inline-block; width:18px; height:0; border-top:2px solid currentColor;
+    vertical-align:middle; margin-right:6px}
+  .legend .e{color:var(--brass)} .legend .b i{border-top-style:dashed;color:var(--brass-soft)}
+  .legend .m i{border:0;width:9px;height:9px;border-radius:50%;background:var(--ink)}
+
+  .tablewrap{overflow-x:auto}
+  table{width:100%; border-collapse:collapse; font-size:15px}
+  th,td{padding:10px 12px; text-align:right; border-bottom:1px solid var(--line); font-variant-numeric:tabular-nums}
+  th{font-family:"IBM Plex Mono",monospace; font-size:10.5px; font-weight:500; text-transform:uppercase;
+    letter-spacing:.1em; color:var(--ink-dim)}
+  th:first-child,td:first-child{text-align:left}
+  td:first-child{font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:var(--ink-dim); white-space:nowrap}
+  tbody tr:last-child td{border-bottom:0}
+  td.mono{font-family:"IBM Plex Mono",monospace; font-size:13px}
+  td.exp{color:var(--brass); font-weight:500}
+  .rrow td:nth-child(2){text-align:left}
+  .rrow .rc{display:flex; align-items:center; gap:9px; justify-content:flex-end}
+  .rrow .bar{height:7px; background:var(--brass); opacity:.55; border-radius:1px; flex:0 0 auto}
+  .rrow a{color:var(--ink); text-decoration:none; border-bottom:1px solid transparent}
+  .rrow a:hover{border-bottom-color:var(--brass)}
+
+  .cal{margin:0; padding:0; list-style:none}
+  .cal .day{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--brass); padding:16px 0 6px; border-bottom:1px solid var(--line)}
+  .cal .day:first-child{padding-top:0}
+  .cal .slot{display:grid; grid-template-columns:96px 1fr; gap:14px; align-items:baseline;
+    padding:9px 0; border-bottom:1px solid var(--line)}
+  .cal .slot .t{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-dim); white-space:nowrap}
+  .cal .slot .c{font-size:16px}
+  @media (max-width:520px){.cal .slot{grid-template-columns:1fr; gap:1px}}
+
+  .log{margin:0; padding:0; list-style:none; font-size:14.5px}
+  .log li{display:grid; grid-template-columns:150px 92px 1fr; gap:12px; align-items:baseline;
+    padding:8px 0; border-bottom:1px solid var(--line)}
+  .log li:last-child{border-bottom:0}
+  .log .when{font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-dim); white-space:nowrap}
+  .log .tag{font-family:"IBM Plex Mono",monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.06em}
+  .log .tag.posted,.log .tag.recycled{color:var(--ok)}
+  .log .tag.idle{color:var(--ink-dim)}
+  .log .tag.failed,.log .tag.skipped-bad{color:var(--bad)}
+  .log .tag.low-queue{color:var(--warn)}
+  .log .detail{color:var(--ink)}
+  .log .detail.err{color:var(--bad)}
+  @media (max-width:560px){.log li{grid-template-columns:1fr auto; gap:2px 10px}.log .detail{grid-column:1/-1}}
+
+  .driver{display:grid; grid-template-columns:1fr 1fr; gap:34px}
+  @media (max-width:600px){.driver{grid-template-columns:1fr; gap:20px}}
+  .driver .kv{font-family:"IBM Plex Mono",monospace; font-size:13px; line-height:2.05}
+  .driver .kv b{color:var(--ink); font-weight:500} .driver .kv span{color:var(--ink-dim)}
+
+  .standing{display:grid; grid-template-columns:1fr 1fr; gap:38px}
+  @media (max-width:600px){.standing{grid-template-columns:1fr; gap:24px}}
+  .rail{list-style:none; margin:0; padding:0}
+  .rail li{display:flex; align-items:center; gap:11px; padding:9px 0; border-bottom:1px solid var(--line); font-size:15.5px}
+  .rail li:last-child{border-bottom:0}
+  .dot{width:8px; height:8px; border-radius:50%; flex:0 0 auto; background:var(--ink-dim)}
+  .dot.live{background:var(--ok)} .dot.wait{background:var(--warn)}
+  .rail .state{margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:11px;
+    letter-spacing:.06em; text-transform:uppercase; color:var(--ink-dim)}
+  .rail .state.live{color:var(--ok)} .rail .state.wait{color:var(--warn)}
+  .kv2{font-family:"IBM Plex Mono",monospace; font-size:13px; line-height:2}
+  .kv2 b{color:var(--ink); font-weight:500} .kv2 span{color:var(--ink-dim)}
+
+  footer{margin-top:64px; padding-top:18px; border-top:1px solid var(--line);
+    font-style:italic; color:var(--ink-dim); font-size:14px}
+  a{color:var(--brass)}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="alert ok" id="alert"></div>
+  <header class="mast">
+    <div class="monogram" aria-hidden="true">OMM</div>
+    <div>
+      <h1>Old&nbsp;Money&nbsp;Mood Ledger</h1>
+      <div class="handle" id="handle">@oldmoneymood</div>
+      <p class="dateline" id="dateline">—</p>
+    </div>
+  </header>
+
+  <div class="strip" id="strip"></div>
+
+  <section>
+    <p class="eyebrow">Changes &amp; errors</p>
+    <h2>Everything the poster has done lately</h2>
+    <ul class="log" id="log"></ul>
+    <p class="note" id="lognote"></p>
+  </section>
+
+  <section>
+    <p class="eyebrow">The growth curve</p>
+    <h2>Followers, measured and projected</h2>
+    <svg class="chart" id="chart" viewBox="0 0 920 360" role="img" aria-label="Projected follower growth over the next year"></svg>
+    <div class="legend"><span class="m"><i></i>Measured</span><span class="e"><i></i>Expected</span><span class="b"><i></i>Low / high band</span></div>
+    <p class="note" id="curvenote"></p>
+  </section>
+
+  <section>
+    <p class="eyebrow">Where it lands</p>
+    <h2>Projected follower count by horizon</h2>
+    <div class="tablewrap"><table><thead><tr><th>From today</th><th>Low</th><th>Expected</th><th>High</th></tr></thead><tbody id="horizons"></tbody></table></div>
+    <p class="note" id="modelnote"></p>
+  </section>
+
+  <section>
+    <p class="eyebrow">On the calendar</p>
+    <h2>The next reels queued (Eastern time)</h2>
+    <ul class="cal" id="calendar"></ul>
+  </section>
+
+  <section>
+    <p class="eyebrow">Recent reels</p>
+    <h2>Reach is the fuel — here is the last of it</h2>
+    <div class="tablewrap"><table><thead><tr><th>Date</th><th>Reel</th><th>Reach</th><th>Likes</th></tr></thead><tbody id="reels"></tbody></table></div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Standing</p>
+    <h2>Channels and machinery</h2>
+    <div class="standing"><ul class="rail" id="channels"></ul><div class="kv2" id="system"></div></div>
+  </section>
+
+  <footer id="footer"></footer>
+</div>
+
+<script>window.__DATA__ = /*DATA*/{}/*END*/;</script>
+<script>
+(function(){
+  var D=window.__DATA__, ET="America/New_York";
+  function esc(s){return (s==null?"":String(s)).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  function nf(n){return n==null?"—":Math.round(n).toLocaleString("en-US");}
+  function dShort(x){try{return new Date(x).toLocaleDateString("en-US",{timeZone:ET,month:"short",day:"2-digit"});}catch(e){return x;}}
+  function dLong(x){try{return new Date(x).toLocaleString("en-US",{timeZone:ET,month:"long",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit"});}catch(e){return x;}}
+  function dDay(x){try{return new Date(x).toLocaleDateString("en-US",{timeZone:ET,weekday:"long",month:"long",day:"numeric"});}catch(e){return x;}}
+  function dTime(x){try{return new Date(x).toLocaleTimeString("en-US",{timeZone:ET,hour:"numeric",minute:"2-digit"});}catch(e){return x;}}
+  function dLog(x){try{return new Date(x).toLocaleString("en-US",{timeZone:ET,month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});}catch(e){return x;}}
+
+  var f0=D.profile.followers_count;
+  document.getElementById("handle").textContent="@"+D.profile.username;
+  document.getElementById("dateline").textContent="Refreshed "+dLong(D.generated_at)+" ET · updates several times a day";
+
+  // alert banner
+  var st=D.status||{}, recentErr=(D.activity||[]).slice(-30).filter(function(a){return a.action==="failed"||a.action==="skipped-bad";});
+  var ab=document.getElementById("alert");
+  if(st.action==="failed"||st.action==="skipped-bad"){ ab.className="alert bad";
+    ab.textContent="Last run: "+st.action.toUpperCase()+" on "+(st.item_id||"?")+". Instagram post may not have gone out — check GitHub Issues (an alert issue was opened)."; }
+  else if(st.low_queue){ ab.className="alert warn"; ab.textContent="Content queue is low ("+nf(st.fresh_remaining)+" left). Add more clips soon."; }
+  else if(recentErr.length){ ab.className="alert warn"; ab.textContent=recentErr.length+" failed/skipped item(s) in the last 30 events — see the log below. Posting is otherwise healthy."; }
+  else { ab.className="alert ok"; ab.textContent="All systems normal. Last check "+dLog(st.checked_at)+" ET — "+esc(st.action||"—")+"."; }
+
+  // strip
+  var mNet=null;
+  if(D.series&&D.series.length>=2){var a=D.series[0],b=D.series[D.series.length-1];var dd=(new Date(b.date)-new Date(a.date))/864e5; if(dd>0)mNet=(b.followers-a.followers)/dd;}
+  var strip=[[nf(f0),"Followers",true],[nf(D.profile.follows_count),"Following",false],
+    [nf(D.profile.media_count),"Posts",false],[mNet==null?"—":("+"+nf(mNet*7)),"Net / week",false]];
+  document.getElementById("strip").innerHTML=strip.map(function(x){return '<div class="cell"><div class="fig'+(x[2]?" brass":"")+'">'+esc(x[0])+'</div><div class="cap">'+esc(x[1])+'</div></div>';}).join("");
+
+  // activity log
+  var lg=(D.activity||[]).slice().reverse().slice(0,25);
+  document.getElementById("log").innerHTML = lg.map(function(a){
+    var isErr=a.action==="failed"||a.action==="skipped-bad";
+    return '<li><span class="when">'+esc(dLog(a.t))+' ET</span>'+
+      '<span class="tag '+esc(a.action)+'">'+esc(a.action)+'</span>'+
+      '<span class="detail'+(isErr?' err':'')+'">'+esc(a.item_id||"")+(a.detail?'  '+esc(a.detail):'')+'</span></li>';
+  }).join("") || '<li><span class="detail">No activity recorded yet.</span></li>';
+  document.getElementById("lognote").textContent =
+    "Every run appends here — what posted and where (IG/FB/YT), what was recycled, and any failure with its reason. Errors also open a GitHub issue and email you.";
+
+  // model
+  var rpp=D.reels_reach_med||130, pd=D.engine.posts_per_day, disc=rpp*pd*0.9;
+  var SC={low:{c:0.006,g:0.02},exp:{c:0.013,g:0.06},high:{c:0.026,g:0.12}};
+  function curve(s){var p=[{d:0,v:f0}],t=f0;for(var d=1;d<=365;d++){var m=Math.floor((d-1)/30);t+=disc*s.c*Math.pow(1+s.g,m);if(d%5===0||d===365)p.push({d:d,v:t});}return p;}
+  var cL=curve(SC.low),cE=curve(SC.exp),cH=curve(SC.high);
+  var at=function(c,d){for(var i=c.length-1;i>=0;i--)if(c[i].d<=d)return c[i].v;return c[0].v;};
+  (function(){
+    var W=920,H=360,ml=52,mr=64,mt=18,mb=40,x0=ml,x1=W-mr,y0=H-mb,y1=mt;
+    var yMax=Math.max(2000,Math.ceil(at(cH,365)/2000)*2000);
+    var sx=function(d){return x0+(d/365)*(x1-x0);},sy=function(v){return y0+(v/yMax)*(y1-y0);};
+    var pth=function(c){return c.map(function(p,i){return (i?"L":"M")+sx(p.d).toFixed(1)+" "+sy(p.v).toFixed(1);}).join(" ");};
+    var g="",stp=yMax/4;
+    for(var t=0;t<=yMax;t+=stp){g+='<line class="grid" x1="'+x0+'" y1="'+sy(t)+'" x2="'+x1+'" y2="'+sy(t)+'"/><text x="'+(x0-9)+'" y="'+(sy(t)+3)+'" text-anchor="end">'+nf(t)+'</text>';}
+    var xt=[[0,"Today"],[30,"1 mo"],[90,"3 mo"],[180,"6 mo"],[270,"9 mo"],[365,"1 yr"]].map(function(k){return '<text x="'+sx(k[0])+'" y="'+(y0+16)+'" text-anchor="middle">'+k[1]+'</text>';}).join("");
+    var band="M"+cL.map(function(p){return sx(p.d).toFixed(1)+" "+sy(p.v).toFixed(1);}).join(" L")+" L"+cH.slice().reverse().map(function(p){return sx(p.d).toFixed(1)+" "+sy(p.v).toFixed(1);}).join(" L")+" Z";
+    var meas="";
+    if(D.series&&D.series.length){var ld=new Date(D.series[D.series.length-1].date);meas=D.series.map(function(s){var d=(new Date(s.date)-ld)/864e5;return '<circle class="meas" cx="'+sx(Math.max(d,0))+'" cy="'+sy(s.followers)+'" r="4"/>';}).join("");}
+    var e1=at(cE,365),h1=at(cH,365),l1=at(cL,365);
+    var el='<text class="lbl" x="'+(x1+6)+'" y="'+(sy(e1)+3)+'" fill="var(--brass)">'+nf(e1)+'</text><text x="'+(x1+6)+'" y="'+(sy(h1)+3)+'">'+nf(h1)+'</text><text x="'+(x1+6)+'" y="'+(sy(l1)+3)+'">'+nf(l1)+'</text>';
+    document.getElementById("chart").innerHTML=g+'<path class="band" d="'+band+'"/><path class="edge" d="'+pth(cL)+'"/><path class="edge" d="'+pth(cH)+'"/><path class="exp" d="'+pth(cE)+'"/>'+meas+el+xt+'<line class="grid" x1="'+x0+'" y1="'+y0+'" x2="'+x1+'" y2="'+y0+'"/>';
+  })();
+  document.getElementById("curvenote").innerHTML='Measured points so far: <b>'+((D.series&&D.series.length)||0)+'</b>. The band is a model; the Expected line firms up as the daily follower log grows.';
+
+  document.getElementById("horizons").innerHTML=[[30,"30 days"],[90,"90 days"],[180,"6 months"],[365,"1 year"]].map(function(h){
+    return '<tr><td>'+h[1]+'</td><td class="mono">'+nf(at(cL,h[0]))+'</td><td class="mono exp">'+nf(at(cE,h[0]))+'</td><td class="mono">'+nf(at(cH,h[0]))+'</td></tr>';}).join("");
+  document.getElementById("modelnote").innerHTML='Assumes '+pd+' reels/day, ~'+nf(rpp)+' reach each, and 0.6% / 1.3% / 2.6% of non-followers reached choosing to follow. A viral hit clears the high line fast; a quiet stretch undershoots the low one.';
+
+  var up=D.upcoming||[],html="",cur=null;
+  up.forEach(function(u){var d=dDay(u.when);if(d!==cur){cur=d;html+='<li class="day">'+esc(d)+'</li>';}html+='<li class="slot"><span class="t">'+esc(dTime(u.when))+'</span><span class="c">'+esc(u.caption)+'</span></li>';});
+  document.getElementById("calendar").innerHTML=html||'<li class="slot"><span class="c">Queue empty.</span></li>';
+
+  var reels=(D.recent||[]).filter(function(r){return r.type==="REELS";}).slice(0,10);
+  var mx=Math.max.apply(null,reels.map(function(r){return r.reach||0;}).concat([1]));
+  document.getElementById("reels").innerHTML=reels.map(function(r){var w=Math.max(4,Math.round(((r.reach||0)/mx)*120));
+    return '<tr class="rrow"><td>'+esc(dShort(r.timestamp))+'</td><td><a href="'+esc(r.permalink)+'" target="_blank" rel="noopener">'+(esc(r.caption)||"—")+'</a></td><td><span class="rc"><span class="bar" style="width:'+w+'px"></span>'+nf(r.reach)+'</span></td><td class="mono">'+nf(r.likes)+'</td></tr>';}).join("");
+
+  var chans=[["Instagram","live","live"],["Facebook","live","live"],["YouTube","live","live"],["TikTok","","skipped"]];
+  document.getElementById("channels").innerHTML=chans.map(function(c){return '<li><span class="dot '+c[1]+'"></span><span>'+esc(c[0])+'</span><span class="state '+c[1]+'">'+esc(c[2])+'</span></li>';}).join("");
+  document.getElementById("system").innerHTML=
+    '<div><span>Last check&nbsp;&nbsp;</span><b>'+esc(dLog(st.checked_at))+' ET</b></div>'+
+    '<div><span>Outcome&nbsp;&nbsp;</span><b>'+esc(st.action||"—")+(st.item_id?" · "+esc(st.item_id):"")+'</b></div>'+
+    '<div><span>Reserve&nbsp;&nbsp;</span><b>'+nf(st.fresh_remaining)+' reels · '+nf(D.engine.days_left)+' days</b></div>'+
+    '<div><span>Follower log&nbsp;&nbsp;</span><b>'+((D.series&&D.series.length)||0)+' day(s)</b></div>';
+
+  document.getElementById("footer").textContent="Rebuilt automatically on every posting run (several times a day) from the Instagram Graph API and the posting queue.";
+})();
+</script>
+</body>
+</html>
