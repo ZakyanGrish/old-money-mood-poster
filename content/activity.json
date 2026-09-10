@@ -28,5 +28,11 @@
   "action": "idle",
   "item_id": null,
   "detail": ""
+ },
+ {
+  "t": "2026-09-10T22:15:11.579460+00:00",
+  "action": "failed",
+  "item_id": "sched-20260910T2000",
+  "detail": "Container 17901270831570028 failed: Error: Media upload has failed with error code 2207076"
  }
 ]

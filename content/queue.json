@@ -132,7 +132,9 @@
     "posted_at": null,
     "result_id": null,
     "source_public_id": "Raised_with_class_DRzQmLCiL5P",
-    "pass": 1
+    "pass": 1,
+    "fail_count": 1,
+    "last_error": "Container 17901270831570028 failed: Error: Media upload has failed with error code 2207076"
   },
   {
     "id": "sched-20260910T2300",
