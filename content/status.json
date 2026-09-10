@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-09-10T13:03:14.408521+00:00",
-  "action": "idle",
-  "item_id": null,
-  "fresh_remaining": 7295,
+  "checked_at": "2026-09-10T15:28:13.563383+00:00",
+  "action": "posted",
+  "item_id": "sched-20260910T1430",
+  "fresh_remaining": 7294,
   "low_queue": false
 }
