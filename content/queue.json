@@ -6,7 +6,9 @@
     "not_before": null,
     "posted_at": "2026-09-08T12:08:55.458434+00:00",
     "result_id": "18147202372496815",
-    "media_url": "https://res.cloudinary.com/o3dzubij/image/upload/v1788868919/omm/wbuf549xy7mjrxpsyvsh.jpg"
+    "media_url": "https://res.cloudinary.com/o3dzubij/image/upload/v1788868919/omm/wbuf549xy7mjrxpsyvsh.jpg",
+    "theme": "style",
+    "reach": 6.0
   },
   {
     "id": "test-reel-2026-09-08",
@@ -15,7 +17,9 @@
     "not_before": null,
     "posted_at": "2026-09-08T12:24:41.138139+00:00",
     "result_id": "18027826694895184",
-    "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788869922/omm/d5hnlmlpryzabctndrsm.mp4"
+    "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788869922/omm/d5hnlmlpryzabctndrsm.mp4",
+    "theme": "style",
+    "reach": 17.0
   },
   {
     "id": "test-carousel-2026-09-08",
@@ -28,7 +32,9 @@
       "https://res.cloudinary.com/o3dzubij/image/upload/v1788869925/omm/xtfyrrggngfccloglgmu.jpg",
       "https://res.cloudinary.com/o3dzubij/image/upload/v1788869927/omm/evgdnivhec0nsarz5evi.jpg",
       "https://res.cloudinary.com/o3dzubij/image/upload/v1788869929/omm/g0cnuby6a0d315altviw.jpg"
-    ]
+    ],
+    "theme": "style",
+    "reach": 11.0
   },
   {
     "id": "test-story-2026-09-08b",
@@ -37,7 +43,9 @@
     "not_before": null,
     "posted_at": "2026-09-08T12:30:40.111056+00:00",
     "result_id": "18177322258431447",
-    "media_url": "https://res.cloudinary.com/o3dzubij/image/upload/v1788870608/omm/ydfxqjrpagesdcjxcs9g.jpg"
+    "media_url": "https://res.cloudinary.com/o3dzubij/image/upload/v1788870608/omm/ydfxqjrpagesdcjxcs9g.jpg",
+    "theme": "generic",
+    "reach": 0.0
   },
   {
     "id": "sched-2026-09-09-1",
@@ -48,7 +56,9 @@
     "posted_at": "2026-09-08T12:46:17.983794+00:00",
     "result_id": "18195303478382810",
     "source_public_id": "Monaco-_A_playground_for_the_elite_DBENbRBsiVP",
-    "pass": 1
+    "pass": 1,
+    "theme": "travel",
+    "reach": 142.0
   },
   {
     "id": "sched-2026-09-09-2",
@@ -59,7 +69,9 @@
     "posted_at": "2026-09-08T17:50:55.999322+00:00",
     "result_id": "17891176887674080",
     "source_public_id": "This_or_nothing_DFSVONNoL6E",
-    "pass": 1
+    "pass": 1,
+    "theme": "style",
+    "reach": 197.0
   },
   {
     "id": "sched-2026-09-10-1",
@@ -71,7 +83,9 @@
     "result_id": "17947180371286213",
     "source_public_id": "Join_the_legacy_of_enduring_sophistication._C0t_x0XpUQl",
     "pass": 1,
-    "fb_result_id": "2230304911153677"
+    "fb_result_id": "2230304911153677",
+    "theme": "style",
+    "reach": 137.0
   },
   {
     "id": "sched-2026-09-10-2",
@@ -83,7 +97,9 @@
     "result_id": "18102946571250615",
     "source_public_id": "Old_Money_Charm_in_the_Heart_of_Monaco_C99-k1bOMFj",
     "pass": 1,
-    "fb_result_id": "2111691896379710"
+    "fb_result_id": "2111691896379710",
+    "theme": "travel",
+    "reach": 1547.0
   },
   {
     "id": "sched-20260910T1430",
@@ -95,7 +111,8 @@
     "result_id": "17934466446377778",
     "source_public_id": "What_s_your_go-to_Old_Money_ski_destination_\ufe0f_Let_us_know_in_the_comments_DFIGbM0MYqV",
     "pass": 1,
-    "fb_result_id": "1724614071931077"
+    "fb_result_id": "1724614071931077",
+    "theme": "travel"
   },
   {
     "id": "sched-20260910T1430",
@@ -108,7 +125,8 @@
     "source_public_id": "Our_kind_of_winter_DRPVUdViDdY",
     "pass": 1,
     "fb_result_id": "2999493373714994",
-    "yt_result_id": "Ik5CDMs7dp0"
+    "yt_result_id": "Ik5CDMs7dp0",
+    "theme": "travel"
   },
   {
     "id": "sched-20260910T1430",
@@ -121,7 +139,8 @@
     "source_public_id": "Today_Tomorrow_Forever_DOIXaT-iOnz",
     "pass": 1,
     "fb_result_id": "867465373001650",
-    "yt_result_id": "DWmk5gLfQfM"
+    "yt_result_id": "DWmk5gLfQfM",
+    "theme": "style"
   },
   {
     "id": "sched-20260910T2000",
@@ -136,7 +155,8 @@
     "fail_count": 1,
     "last_error": "Container 17901270831570028 failed: Error: Media upload has failed with error code 2207076",
     "fb_result_id": "1893362882075255",
-    "yt_result_id": "L-xLCgMmvLE"
+    "yt_result_id": "L-xLCgMmvLE",
+    "theme": "style"
   },
   {
     "id": "story-20260911T1100-b64ca2",
