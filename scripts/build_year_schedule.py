@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import hashlib
 import json
 import os
 import random
@@ -37,7 +38,60 @@ SLOTS_UTC = [(12, 0), (14, 30), (17, 0), (20, 0), (23, 0)]
 MIN_PER_DAY = 3
 MAX_PER_DAY = 5
 SEED = 20260908
-HASHTAGS = "#oldmoney #oldmoneyaesthetic #quietluxury #oldmoneystyle #timelesselegance"
+GENERIC_HASHTAGS = ["#oldmoney", "#oldmoneyaesthetic", "#quietluxury", "#oldmoneystyle", "#timelesselegance"]
+
+# keyword -> (emoji pool, extra themed hashtags). First match wins; order matters.
+THEMES = [
+    ("travel", ("monaco", "como", "riviera", "dubai", "paris", "italy", "dolce vita", "yacht",
+                "boat", "summer", "vacation", "destination", "travel", "milan", "moritz",
+                "switzerland", "courchevel", "alps", "ski", "winter"),
+     ["🛥️", "🥂", "🇮🇹", "✈️", "🏖️"],
+     ["#rivierastyle", "#cotedazur", "#monacolife", "#travelinstyle", "#jetset"]),
+    ("style", ("outfit", "wear", "tailor", "suit", "dress", "loafers", "cashmere", "style",
+               "fashion", "closet", "wardrobe", "accessor", "classy"),
+     ["🧥", "⌚", "🤎", "👞"],
+     ["#quietluxurystyle", "#tailoredfit", "#oldmoneystyle", "#timelessstyle"]),
+    ("legacy", ("legacy", "tradition", "family", "future", "goal", "dream", "success", "wealth",
+                "money", "class", "value", "generation", "born", "job", "career"),
+     ["👑", "💼", "🥃", "🕰️"],
+     ["#oldmoneymindset", "#legacywealth", "#generationalwealth", "#oldmoneyvalues"]),
+    ("romance", ("love", "romance", "soulmate", "together", "wedding", "married", "couple"),
+     ["💌", "💍", "🤍"],
+     ["#oldmoneylove", "#classiccouple", "#timelessromance"]),
+]
+
+CTAS = [
+    "Save this for later.",
+    "Tag someone who'd get it.",
+    "Which one are you?",
+    "Send this to your future self.",
+    "Follow for more of this.",
+    "Drop a \U0001F90D if you agree.",
+    "Screenshot this.",
+]
+
+
+def enrich_caption(hook: str, rng: random.Random) -> str:
+    """hook -> full caption: maybe an emoji, maybe a CTA line, themed hashtags."""
+    low = hook.lower()
+    theme = next((t for t in THEMES if any(k in low for k in t[1])), None)
+
+    line1 = hook
+    if rng.random() < 0.5:                                   # emoji ~half the time
+        pool = theme[2] if theme else ["✨", "🥂", "🕊️"]
+        line1 = hook + " " + rng.choice(pool)
+
+    parts = [line1]
+    if not hook.rstrip().endswith("?") and rng.random() < 0.7:  # skip CTA on questions
+        parts.append(rng.choice(CTAS))
+
+    tags = GENERIC_HASHTAGS[:3]
+    if theme:
+        tags = tags + rng.sample(theme[3], k=min(2, len(theme[3])))
+    else:
+        tags = GENERIC_HASHTAGS
+    parts.append(" ".join(tags))
+    return "\n\n".join(parts)
 
 # Cloudinary public_ids we never want to schedule (test uploads, demo assets).
 EXCLUDE_IDS = {"omm/d5hnlmlpryzabctndrsm"}
@@ -148,13 +202,16 @@ def build(days: int, recent_pids: set = frozenset()) -> list:
             idx += 1
             pid = v["public_id"]
             seen_pass[pid] = seen_pass.get(pid, 0) + 1
-            cap = caption_from_public_id(pid)
+            hook = caption_from_public_id(pid)
+            caption = enrich_caption(hook, rng)
+            pid_tag = hashlib.sha1(pid.encode()).hexdigest()[:6]
             items.append({
-                # timestamp id: globally unique, never collides with earlier posted ids
-                "id": "sched-%s" % when.strftime("%Y%m%dT%H%M"),
+                # slot time + a hash of the video: unique even across re-runs that
+                # regenerate the same slot with a different pick.
+                "id": "sched-%s-%s" % (when.strftime("%Y%m%dT%H%M"), pid_tag),
                 "type": "reel",
                 "media_url": v["secure_url"],
-                "caption": "%s\n\n%s" % (cap, HASHTAGS),
+                "caption": caption,
                 "not_before": when.isoformat(),
                 "posted_at": None,
                 "result_id": None,
