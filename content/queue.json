@@ -159,7 +159,9 @@
     "result_id": null,
     "source_public_id": "Rooted_in_tradition_raised_with_grace_DGIkxb2sOYL",
     "theme": "legacy",
-    "pass": 1
+    "pass": 1,
+    "fail_count": 1,
+    "last_error": "Container 17901388242570028 failed: Error: Media upload has failed with error code 2207076"
   },
   {
     "id": "sched-20260911T1430-07d97c",
