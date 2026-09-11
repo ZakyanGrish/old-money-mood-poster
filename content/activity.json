@@ -52,5 +52,11 @@
   "action": "failed",
   "item_id": "sched-20260911T1200-b64ca2",
   "detail": "Container 17901388242570028 failed: Error: Media upload has failed with error code 2207076"
+ },
+ {
+  "t": "2026-09-11T17:49:00.022907+00:00",
+  "action": "posted",
+  "item_id": "sched-20260911T1200-b64ca2",
+  "detail": "\u2192 IG+FB+YT"
  }
 ]
