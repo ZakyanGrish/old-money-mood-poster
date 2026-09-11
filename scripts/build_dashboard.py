@@ -73,7 +73,7 @@ def gather() -> dict:
             api_error = str(e)
 
     q = _read(ROOT / "content" / "queue.json", [])
-    sched = [it for it in q if str(it.get("id", "")).startswith("sched-")]
+    sched = [it for it in q if str(it.get("id", "")).startswith(("sched-", "story-"))]
     unposted = sorted(
         (it for it in sched if not it.get("posted_at") and it.get("not_before")),
         key=lambda it: it["not_before"],

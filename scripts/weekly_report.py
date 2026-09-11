@@ -111,7 +111,7 @@ def main() -> int:
 
     # ---- queue health ---------------------------------------------------
     q = json.loads(QUEUE.read_text() or "[]") if QUEUE.exists() else []
-    sched = [it for it in q if str(it.get("id", "")).startswith("sched-")]
+    sched = [it for it in q if str(it.get("id", "")).startswith(("sched-", "story-"))]
     unposted = [it for it in sched if not it.get("posted_at")]
     skipped = [it for it in q if it.get("skipped")]
     failing = [it for it in q if it.get("fail_count") and not it.get("posted_at")]

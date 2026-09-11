@@ -24,6 +24,11 @@ jobs:
           python-version: "3.12"
       - run: pip install -r requirements.txt
 
+      - name: Backfill reach + theme on posted history
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+        run: python scripts/log_reach.py || true
+
       - name: Build
         env:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
@@ -33,7 +38,7 @@ jobs:
         run: |
           git config user.name "poster-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dashboard.html content/activity.json
-          git diff --staged --quiet || git commit -m "dashboard: daily refresh [skip ci]"
+          git add dashboard.html content/activity.json content/queue.json
+          git diff --staged --quiet || git commit -m "dashboard: daily refresh + reach backfill [skip ci]"
           git pull --rebase --autostash -q || true
           git push

@@ -157,7 +157,40 @@ def caption_from_public_id(pid: str) -> str:
     return s
 
 
-def build(days: int, recent_pids: set = frozenset()) -> list:
+def theme_of(caption_or_hook: str) -> str:
+    low = (caption_or_hook or "").lower()
+    for name, keywords, *_ in THEMES:
+        if any(k in low for k in keywords):
+            return name
+    return "generic"
+
+
+def theme_weights(history: list, min_samples: int = 8) -> dict:
+    """Average measured reach per theme from posted history -> a selection weight.
+
+    Falls back to 1.0 (even weighting) for any theme without enough samples yet —
+    same "model until measured" pattern as the follower projection.
+    """
+    from collections import defaultdict
+
+    sums, counts = defaultdict(float), defaultdict(int)
+    for it in history:
+        r, th = it.get("reach"), it.get("theme")
+        if r is not None and th:
+            sums[th] += r
+            counts[th] += 1
+    overall = (sum(sums.values()) / sum(counts.values())) if counts else None
+    names = [t[0] for t in THEMES] + ["generic"]
+    weights = {}
+    for name in names:
+        if overall and counts.get(name, 0) >= min_samples:
+            weights[name] = max(0.7, min(1.6, sums[name] / counts[name] / overall))
+        else:
+            weights[name] = 1.0
+    return weights
+
+
+def build(days: int, recent_pids: set = frozenset(), history: list = ()) -> list:
     vids = fetch_videos()
     if not vids:
         raise SystemExit("No videos found in Cloudinary.")
@@ -172,9 +205,18 @@ def build(days: int, recent_pids: set = frozenset()) -> list:
         day_slots.append(slots)
     total = sum(len(s) for s in day_slots)
 
+    # Weight the deck toward themes that have measurably performed better, once
+    # there's enough posted history to say so; every video still gets at least
+    # one copy per pass, so nothing is ever excluded -- just less frequent.
+    weights = theme_weights(list(history))
+    weighted_vids: list = []
+    for v in vids:
+        w = weights.get(theme_of(caption_from_public_id(v["public_id"])), 1.0)
+        weighted_vids.extend([v] * max(1, round(w * 10)))
+
     order: list = []
     while len(order) < total + len(vids):        # + one deck of buffer for skip-forward
-        deck = vids[:]
+        deck = weighted_vids[:]
         rng.shuffle(deck)
         order.extend(deck)
 
@@ -205,7 +247,7 @@ def build(days: int, recent_pids: set = frozenset()) -> list:
             hook = caption_from_public_id(pid)
             caption = enrich_caption(hook, rng)
             pid_tag = hashlib.sha1(pid.encode()).hexdigest()[:6]
-            items.append({
+            item = {
                 # slot time + a hash of the video: unique even across re-runs that
                 # regenerate the same slot with a different pick.
                 "id": "sched-%s-%s" % (when.strftime("%Y%m%dT%H%M"), pid_tag),
@@ -216,8 +258,28 @@ def build(days: int, recent_pids: set = frozenset()) -> list:
                 "posted_at": None,
                 "result_id": None,
                 "source_public_id": pid,
+                "theme": theme_of(hook),
                 "pass": seen_pass[pid],
-            })
+            }
+            items.append(item)
+            if slot == slots[0]:
+                # One Story a day, reusing the day's first reel -- keeps the
+                # account in followers' top bar at zero extra content cost.
+                story_when = dt.datetime.combine(
+                    start + dt.timedelta(days=day), dt.time(11, 0), dt.timezone.utc
+                )
+                if story_when > now:
+                    items.append({
+                        "id": "story-%s-%s" % (story_when.strftime("%Y%m%dT%H%M"), pid_tag),
+                        "type": "story",
+                        "media_url": v["secure_url"],
+                        "caption": "",
+                        "not_before": story_when.isoformat(),
+                        "posted_at": None,
+                        "result_id": None,
+                        "source_public_id": pid,
+                        "theme": item["theme"],
+                    })
     items.sort(key=lambda it: it["not_before"])
     return items
 
@@ -230,7 +292,7 @@ def main(argv=None) -> int:
 
     existing = json.loads(QUEUE_PATH.read_text() or "[]") if QUEUE_PATH.exists() else []
     kept = [it for it in existing if it.get("posted_at")]
-    live_sched = [it for it in existing if not it.get("posted_at") and str(it.get("id", "")).startswith("sched-")]
+    live_sched = [it for it in existing if not it.get("posted_at") and str(it.get("id", "")).startswith(("sched-", "story-"))]
     if live_sched:
         print("Note: %d unposted sched-* items already in queue; they will be replaced." % len(live_sched))
 
@@ -242,18 +304,21 @@ def main(argv=None) -> int:
     if recent_pids:
         print("Note: %d recently-posted videos held back from the first 3 weeks." % len(recent_pids))
 
-    sched = build(args.days, recent_pids)
+    sched = build(args.days, recent_pids, history=kept)
     new_queue = kept + sched
+    reels = [it for it in sched if it["type"] == "reel"]
+    stories = [it for it in sched if it["type"] == "story"]
 
-    uniq = len({it["source_public_id"] for it in sched})
+    uniq = len({it["source_public_id"] for it in reels})
     print("videos in library:      %d" % uniq)
-    print("scheduled items:        %d  (%d days, %d-%d/day)" % (
-        len(sched), args.days, MIN_PER_DAY, MAX_PER_DAY))
-    print("avg posts/day:          %.2f" % (len(sched) / args.days))
+    print("scheduled reels:        %d  (%d days, %d-%d/day)" % (
+        len(reels), args.days, MIN_PER_DAY, MAX_PER_DAY))
+    print("scheduled stories:      %d  (1/day)" % len(stories))
+    print("avg posts/day:          %.2f" % (len(reels) / args.days))
     print("first post not_before:  %s" % sched[0]["not_before"])
     print("last  post not_before:  %s" % sched[-1]["not_before"])
     print("avg re-airs per video:  %.1f  (~every %d days)" % (
-        len(sched) / uniq, int(args.days / (len(sched) / uniq))))
+        len(reels) / uniq, int(args.days / (len(reels) / uniq))))
     print("kept (already posted):  %d" % len(kept))
     print("queue.json size est:    ~%.1f MB" % (len(sched) * 360 / 1e6))
     print("\nfirst 6:")
