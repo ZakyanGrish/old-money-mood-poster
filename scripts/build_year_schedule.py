@@ -157,6 +157,36 @@ def caption_from_public_id(pid: str) -> str:
     return s
 
 
+SEASON_KEYWORDS = {
+    "winter": ("winter", "ski", "snow", "alps", "courchevel", "moritz", "christmas",
+               "chalet", "fireplace", "sled", "cozy season"),
+    "summer": ("summer", "yacht", "beach", "riviera", "boat", "monaco", "cote d'azur",
+               "dolce vita", "pool", "mediterranean", "sail", "tropical", "vacation"),
+}
+# Which bucket to draw from, by the current calendar month's own season.
+SEASON_BIAS = {
+    "winter":   {"winter": 0.60, "evergreen": 0.35, "summer": 0.05},
+    "summer":   {"summer": 0.60, "evergreen": 0.35, "winter": 0.05},
+    "shoulder": {"evergreen": 0.65, "winter": 0.18, "summer": 0.17},
+}
+
+
+def season_of(hook: str) -> str:
+    low = hook.lower()
+    for name, keywords in SEASON_KEYWORDS.items():
+        if any(k in low for k in keywords):
+            return name
+    return "evergreen"
+
+
+def month_season(month: int) -> str:
+    if month in (12, 1, 2):
+        return "winter"
+    if month in (6, 7, 8):
+        return "summer"
+    return "shoulder"          # Mar-May, Sep-Nov: mostly evergreen, a light mix of both
+
+
 def theme_of(caption_or_hook: str) -> str:
     low = (caption_or_hook or "").lower()
     for name, keywords, *_ in THEMES:
@@ -205,20 +235,44 @@ def build(days: int, recent_pids: set = frozenset(), history: list = ()) -> list
         day_slots.append(slots)
     total = sum(len(s) for s in day_slots)
 
-    # Weight the deck toward themes that have measurably performed better, once
-    # there's enough posted history to say so; every video still gets at least
-    # one copy per pass, so nothing is ever excluded -- just less frequent.
+    # Weight toward themes that have measurably performed better, once there's
+    # enough posted history to say so; every video still gets at least one copy
+    # per pass, so nothing is ever excluded -- just less frequent.
     weights = theme_weights(list(history))
-    weighted_vids: list = []
-    for v in vids:
-        w = weights.get(theme_of(caption_from_public_id(v["public_id"])), 1.0)
-        weighted_vids.extend([v] * max(1, round(w * 10)))
 
-    order: list = []
-    while len(order) < total + len(vids):        # + one deck of buffer for skip-forward
-        deck = weighted_vids[:]
-        rng.shuffle(deck)
-        order.extend(deck)
+    # Bucket the library by season so a September run doesn't surface ski trips.
+    # Each bucket cycles independently (full rotation within it over time); which
+    # bucket a given day draws from is biased by that day's calendar month.
+    buckets: dict = {"winter": [], "summer": [], "evergreen": []}
+    for v in vids:
+        buckets[season_of(caption_from_public_id(v["public_id"]))].append(v)
+    for name in ("winter", "summer"):                 # tiny/empty bucket -> don't strand slots
+        if len(buckets[name]) < 5:
+            buckets[name] = buckets[name] + buckets["evergreen"]
+
+    def _make_order(bucket_vids: list) -> list:
+        weighted = []
+        for v in bucket_vids:
+            w = weights.get(theme_of(caption_from_public_id(v["public_id"])), 1.0)
+            weighted.extend([v] * max(1, round(w * 10)))
+        out: list = []
+        while len(out) < total + len(bucket_vids):    # buffer for skip-forward
+            deck = weighted[:]
+            rng.shuffle(deck)
+            out.extend(deck)
+        return out
+
+    orders = {name: _make_order(bv) for name, bv in buckets.items()}
+    cursors = {name: 0 for name in orders}
+
+    def _next_video(bucket_name: str, day_idx: int) -> dict:
+        o = orders[bucket_name]
+        i = cursors[bucket_name]
+        while day_idx < 21 and i + 1 < len(o) and o[i]["public_id"] in recent_pids:
+            i += 1
+        v = o[min(i, len(o) - 1)]
+        cursors[bucket_name] = i + 1
+        return v
 
     # Start today (UTC): the earliest slot is 12:00 UTC, so if this runs before
     # noon the schedule still covers today; otherwise today's early slots simply
@@ -227,8 +281,9 @@ def build(days: int, recent_pids: set = frozenset(), history: list = ()) -> list
     start = now.date()
     items = []
     seen_pass: dict = {}
-    idx = 0
     for day, slots in enumerate(day_slots):
+        month = (start + dt.timedelta(days=day)).month
+        bias = SEASON_BIAS[month_season(month)]
         for slot in slots:
             h, m = SLOTS_UTC[slot]
             when = dt.datetime.combine(
@@ -236,12 +291,9 @@ def build(days: int, recent_pids: set = frozenset(), history: list = ()) -> list
             )
             if when <= now:                       # don't schedule a slot already past
                 continue
-            # Skip forward past any video posted in the last ~3 weeks, so a regen
-            # right after some test posts doesn't re-air them the next morning.
-            while day < 21 and idx + 1 < len(order) and order[idx]["public_id"] in recent_pids:
-                idx += 1
-            v = order[min(idx, len(order) - 1)]
-            idx += 1
+            names, wts = zip(*bias.items())
+            bucket_name = rng.choices(names, weights=wts, k=1)[0]
+            v = _next_video(bucket_name, day)
             pid = v["public_id"]
             seen_pass[pid] = seen_pass.get(pid, 0) + 1
             hook = caption_from_public_id(pid)
