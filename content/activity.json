@@ -106,5 +106,11 @@
   "action": "idle",
   "item_id": null,
   "detail": ""
+ },
+ {
+  "t": "2026-09-13T15:17:04.104464+00:00",
+  "action": "posted",
+  "item_id": "story-20260913T1100-56b2f6",
+  "detail": "\u2192 IG"
  }
 ]
