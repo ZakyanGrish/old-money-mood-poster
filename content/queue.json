@@ -159,7 +159,8 @@
     "last_error": "Container 17901270831570028 failed: Error: Media upload has failed with error code 2207076",
     "fb_result_id": "1893362882075255",
     "yt_result_id": "L-xLCgMmvLE",
-    "theme": "style"
+    "theme": "style",
+    "reach": 123.0
   },
   {
     "id": "story-20260911T1100-b64ca2",
@@ -170,7 +171,8 @@
     "posted_at": "2026-09-11T03:06:31.026832+00:00",
     "result_id": "17938018518412049",
     "source_public_id": "Rooted_in_tradition_raised_with_grace_DGIkxb2sOYL",
-    "theme": "legacy"
+    "theme": "legacy",
+    "reach": 0.0
   },
   {
     "id": "sched-20260911T1200-b64ca2",
