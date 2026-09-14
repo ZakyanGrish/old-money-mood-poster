@@ -188,7 +188,8 @@
     "fail_count": 1,
     "last_error": "Container 17901388242570028 failed: Error: Media upload has failed with error code 2207076",
     "fb_result_id": "1138492631863997",
-    "yt_result_id": "Jm35k_VhUYo"
+    "yt_result_id": "Jm35k_VhUYo",
+    "reach": 128.0
   },
   {
     "id": "sched-20260911T1430-07d97c",
@@ -202,7 +203,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1335324315108340",
-    "yt_result_id": "-6ZKqDGAl9o"
+    "yt_result_id": "-6ZKqDGAl9o",
+    "reach": 1566.0
   },
   {
     "id": "sched-20260911T1700-3a82a1",
@@ -216,7 +218,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1393376100518169",
-    "yt_result_id": "Im6907Ipxz0"
+    "yt_result_id": "Im6907Ipxz0",
+    "reach": 517.0
   },
   {
     "id": "sched-20260911T2000-da428e",
@@ -230,7 +233,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1764227068112470",
-    "yt_result_id": "G293TlsXo_M"
+    "yt_result_id": "G293TlsXo_M",
+    "reach": 1372.0
   },
   {
     "id": "sched-20260911T2300-2d235c",
@@ -244,7 +248,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1072164308886925",
-    "yt_result_id": "ZUn0DeUSVmI"
+    "yt_result_id": "ZUn0DeUSVmI",
+    "reach": 3715.0
   },
   {
     "id": "story-20260912T1100-1d5b36",
@@ -255,7 +260,8 @@
     "posted_at": "2026-09-12T17:21:01.433710+00:00",
     "result_id": "18196158040391139",
     "source_public_id": "Dogs_living_their_best_life_DIf_2g3M0UF",
-    "theme": "generic"
+    "theme": "generic",
+    "reach": 0.0
   },
   {
     "id": "sched-20260912T1200-1d5b36",
