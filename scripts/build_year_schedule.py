@@ -163,11 +163,23 @@ SEASON_KEYWORDS = {
     "summer": ("summer", "yacht", "beach", "riviera", "boat", "monaco", "cote d'azur",
                "dolce vita", "pool", "mediterranean", "sail", "tropical", "vacation"),
 }
-# Which bucket to draw from, by the current calendar month's own season.
-SEASON_BIAS = {
-    "winter":   {"winter": 0.60, "evergreen": 0.35, "summer": 0.05},
-    "summer":   {"summer": 0.60, "evergreen": 0.35, "winter": 0.05},
-    "shoulder": {"evergreen": 0.65, "winter": 0.18, "summer": 0.17},
+# Per-calendar-month draw weights {winter, summer, evergreen}. Explicit per month
+# rather than three flat buckets, so e.g. September carries zero winter instead
+# of an even "shoulder season" mix -- only the month right next to a season gets
+# a taper, and only on the side that's actually approaching or leaving it.
+MONTH_BIAS = {
+    1:  {"winter": 0.65, "summer": 0.00, "evergreen": 0.35},   # Jan
+    2:  {"winter": 0.55, "summer": 0.00, "evergreen": 0.45},   # Feb
+    3:  {"winter": 0.20, "summer": 0.00, "evergreen": 0.80},   # Mar - late-winter tail
+    4:  {"winter": 0.00, "summer": 0.05, "evergreen": 0.95},   # Apr
+    5:  {"winter": 0.00, "summer": 0.20, "evergreen": 0.80},   # May - early-summer ramp
+    6:  {"winter": 0.00, "summer": 0.55, "evergreen": 0.45},   # Jun
+    7:  {"winter": 0.00, "summer": 0.65, "evergreen": 0.35},   # Jul
+    8:  {"winter": 0.00, "summer": 0.55, "evergreen": 0.45},   # Aug
+    9:  {"winter": 0.00, "summer": 0.15, "evergreen": 0.85},   # Sep - late-summer tail only
+    10: {"winter": 0.05, "summer": 0.00, "evergreen": 0.95},   # Oct
+    11: {"winter": 0.20, "summer": 0.00, "evergreen": 0.80},   # Nov - early-winter ramp
+    12: {"winter": 0.55, "summer": 0.00, "evergreen": 0.45},   # Dec
 }
 
 
@@ -177,14 +189,6 @@ def season_of(hook: str) -> str:
         if any(k in low for k in keywords):
             return name
     return "evergreen"
-
-
-def month_season(month: int) -> str:
-    if month in (12, 1, 2):
-        return "winter"
-    if month in (6, 7, 8):
-        return "summer"
-    return "shoulder"          # Mar-May, Sep-Nov: mostly evergreen, a light mix of both
 
 
 def theme_of(caption_or_hook: str) -> str:
@@ -283,7 +287,7 @@ def build(days: int, recent_pids: set = frozenset(), history: list = ()) -> list
     seen_pass: dict = {}
     for day, slots in enumerate(day_slots):
         month = (start + dt.timedelta(days=day)).month
-        bias = SEASON_BIAS[month_season(month)]
+        bias = MONTH_BIAS[month]
         for slot in slots:
             h, m = SLOTS_UTC[slot]
             when = dt.datetime.combine(
