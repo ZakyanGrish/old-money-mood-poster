@@ -423,7 +423,9 @@
     "result_id": null,
     "source_public_id": "Rich_mornings_richer_nights_DI3Q2AoMntj",
     "theme": "generic",
-    "pass": 1
+    "pass": 1,
+    "fail_count": 1,
+    "last_error": "Container 17902037664570028 failed: Error: Media upload has failed with error code 2207076"
   },
   {
     "id": "sched-20260915T1700-dee603",

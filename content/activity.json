@@ -172,5 +172,11 @@
   "action": "posted",
   "item_id": "story-20260915T1100-b1774b",
   "detail": "\u2192 IG"
+ },
+ {
+  "t": "2026-09-15T18:21:58.079601+00:00",
+  "action": "failed",
+  "item_id": "sched-20260915T1200-b1774b",
+  "detail": "Container 17902037664570028 failed: Error: Media upload has failed with error code 2207076"
  }
 ]
