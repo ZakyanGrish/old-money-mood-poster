@@ -419,13 +419,15 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868433/Rich_mornings_richer_nights_DI3Q2AoMntj.mp4",
     "caption": "Rich mornings richer nights \ud83e\udd42\n\nWhich one are you?\n\n#oldmoney #oldmoneyaesthetic #quietluxury #oldmoneystyle #timelesselegance",
     "not_before": "2026-09-15T12:00:00+00:00",
-    "posted_at": null,
-    "result_id": null,
+    "posted_at": "2026-09-15T20:03:26.055004+00:00",
+    "result_id": "17864081877675040",
     "source_public_id": "Rich_mornings_richer_nights_DI3Q2AoMntj",
     "theme": "generic",
     "pass": 1,
     "fail_count": 1,
-    "last_error": "Container 17902037664570028 failed: Error: Media upload has failed with error code 2207076"
+    "last_error": "Container 17902037664570028 failed: Error: Media upload has failed with error code 2207076",
+    "fb_result_id": "1834107524414066",
+    "yt_result_id": "Gd2dxjCeeNI"
   },
   {
     "id": "sched-20260915T1700-dee603",
