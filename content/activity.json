@@ -160,5 +160,11 @@
   "action": "idle",
   "item_id": null,
   "detail": ""
+ },
+ {
+  "t": "2026-09-15T01:05:12.250853+00:00",
+  "action": "posted",
+  "item_id": "sched-20260914T2300-fbeb1e",
+  "detail": "\u2192 IG+FB+YT"
  }
 ]
