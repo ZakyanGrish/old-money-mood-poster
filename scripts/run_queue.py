@@ -22,6 +22,7 @@ import datetime as dt
 import hashlib
 import json
 import sys
+import time
 from pathlib import Path
 
 import requests
@@ -214,8 +215,18 @@ def main(argv=None) -> int:
         return 0
 
     # ---- post -------------------------------------------------------------
+    # Retry once in-process on a transient upload error before burning a whole
+    # cron slot on it -- that's what was costing a day a fresh post whenever
+    # Instagram's ingestion hiccuped (error 2207076 and friends).
     try:
-        res = _post_item(client, acct.ig_user_id, target)
+        try:
+            res = _post_item(client, acct.ig_user_id, target)
+        except MetaError as e:
+            if "2207076" not in str(e) and "2207026" not in str(e):
+                raise
+            print("Transient upload error, retrying once in-process: %s" % e)
+            time.sleep(15)
+            res = _post_item(client, acct.ig_user_id, target)
     except (MetaError, KeyError) as e:
         target["fail_count"] = int(target.get("fail_count", 0)) + 1
         target["last_error"] = str(e)

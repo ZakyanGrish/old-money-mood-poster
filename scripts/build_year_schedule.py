@@ -96,6 +96,7 @@ def enrich_caption(hook: str, rng: random.Random) -> str:
 # Cloudinary public_ids we never want to schedule (test uploads, demo assets).
 EXCLUDE_IDS = {"omm/d5hnlmlpryzabctndrsm"}
 EXCLUDE_PREFIXES = ("samples/", "omm/")
+MIN_WIDTH = 700   # below this it's a visibly softer/lower-res clip than the 720x1280 norm
 
 
 def fetch_videos() -> list:
@@ -111,7 +112,8 @@ def fetch_videos() -> list:
     )
     out, cursor = [], None
     while True:
-        kw = dict(resource_type="video", type="upload", max_results=500)
+        kw = dict(resource_type="video", type="upload", max_results=500,
+                   fields="secure_url,public_id,width,height,bytes")
         if cursor:
             kw["next_cursor"] = cursor
         r = cloudinary.api.resources(**kw)
@@ -123,6 +125,7 @@ def fetch_videos() -> list:
         v for v in out
         if v["public_id"] not in EXCLUDE_IDS
         and not v["public_id"].startswith(EXCLUDE_PREFIXES)
+        and (v.get("width") or 0) >= MIN_WIDTH
     ]
     return keep
 
