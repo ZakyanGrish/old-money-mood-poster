@@ -435,13 +435,15 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868665/Family_First_C-m6Ci3slZ-.mp4",
     "caption": "Family First \ud83d\udd70\ufe0f\n\nDrop a \ud83e\udd0d if you agree.\n\n#oldmoney #oldmoneyaesthetic #quietluxury #legacywealth #oldmoneymindset",
     "not_before": "2026-09-15T17:00:00+00:00",
-    "posted_at": null,
-    "result_id": null,
+    "posted_at": "2026-09-16T00:54:23.305822+00:00",
+    "result_id": "17985972570065035",
     "source_public_id": "Family_First_C-m6Ci3slZ-",
     "theme": "legacy",
     "pass": 1,
     "fail_count": 1,
-    "last_error": "Container 17902057623570028 failed: Error: Media upload has failed with error code 2207076"
+    "last_error": "Container 17902057623570028 failed: Error: Media upload has failed with error code 2207076",
+    "fb_result_id": "2894635024235538",
+    "yt_result_id": "F8ZP14xf_LQ"
   },
   {
     "id": "sched-20260915T2300-0a0cfd",
