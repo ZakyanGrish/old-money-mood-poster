@@ -377,7 +377,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1468849061728794",
-    "yt_result_id": "nZ3v6Gf0bg0"
+    "yt_result_id": "nZ3v6Gf0bg0",
+    "reach": 8.0
   },
   {
     "id": "sched-20260914T2000-0276cc",
@@ -391,7 +392,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1593549995650967",
-    "yt_result_id": "2vB_oSCy250"
+    "yt_result_id": "2vB_oSCy250",
+    "reach": 111.0
   },
   {
     "id": "sched-20260914T2300-fbeb1e",
@@ -405,7 +407,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1393234378995420",
-    "yt_result_id": "PpiwDrhjrCo"
+    "yt_result_id": "PpiwDrhjrCo",
+    "reach": 1078.0
   },
   {
     "id": "story-20260915T1100-b1774b",
@@ -416,7 +419,8 @@
     "posted_at": "2026-09-15T15:53:50.340467+00:00",
     "result_id": "18374693356236452",
     "source_public_id": "Rich_mornings_richer_nights_DI3Q2AoMntj",
-    "theme": "generic"
+    "theme": "generic",
+    "reach": 0.0
   },
   {
     "id": "sched-20260915T1200-b1774b",
