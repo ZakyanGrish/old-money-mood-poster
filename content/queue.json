@@ -502,7 +502,9 @@
     "result_id": null,
     "source_public_id": "Dreaming_about_this_\ufe0f_C37iTvpMVxq",
     "theme": "legacy",
-    "pass": 1
+    "pass": 1,
+    "fail_count": 1,
+    "last_error": "Container 17902216119570028 failed: Error: Media upload has failed with error code 2207076"
   },
   {
     "id": "story-20260917T1100-7e7989",
