@@ -436,7 +436,8 @@
     "fail_count": 1,
     "last_error": "Container 17902037664570028 failed: Error: Media upload has failed with error code 2207076",
     "fb_result_id": "1834107524414066",
-    "yt_result_id": "Gd2dxjCeeNI"
+    "yt_result_id": "Gd2dxjCeeNI",
+    "reach": 1282.0
   },
   {
     "id": "sched-20260915T1700-dee603",
@@ -452,7 +453,8 @@
     "fail_count": 1,
     "last_error": "Container 17902057623570028 failed: Error: Media upload has failed with error code 2207076",
     "fb_result_id": "2894635024235538",
-    "yt_result_id": "F8ZP14xf_LQ"
+    "yt_result_id": "F8ZP14xf_LQ",
+    "reach": 127.0
   },
   {
     "id": "sched-20260916T1430-50b79e",
@@ -466,7 +468,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "2099371624280236",
-    "yt_result_id": "ictaB6Pk5K0"
+    "yt_result_id": "ictaB6Pk5K0",
+    "reach": 5897.0
   },
   {
     "id": "sched-20260916T1700-77251b",
