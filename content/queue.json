@@ -483,7 +483,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "2005818790131467",
-    "yt_result_id": "Myew8AZ37vQ"
+    "yt_result_id": "Myew8AZ37vQ",
+    "reach": 119.0
   },
   {
     "id": "sched-20260916T2000-897e02",
@@ -497,7 +498,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "2680036699058605",
-    "yt_result_id": "mBzZd0bbZVU"
+    "yt_result_id": "mBzZd0bbZVU",
+    "reach": 123.0
   },
   {
     "id": "sched-20260916T2300-561da0",
@@ -513,7 +515,8 @@
     "fail_count": 1,
     "last_error": "Container 17902216119570028 failed: Error: Media upload has failed with error code 2207076",
     "fb_result_id": "1639725084194116",
-    "yt_result_id": "Xyou_seqhno"
+    "yt_result_id": "Xyou_seqhno",
+    "reach": 115.0
   },
   {
     "id": "story-20260917T1100-7e7989",
