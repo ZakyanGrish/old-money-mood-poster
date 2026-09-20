@@ -527,7 +527,8 @@
     "posted_at": "2026-09-17T18:25:01.016740+00:00",
     "result_id": "18217288648353657",
     "source_public_id": "This_type_of_love_DT77h_IiInO",
-    "theme": "romance"
+    "theme": "romance",
+    "reach": 0.0
   },
   {
     "id": "sched-20260917T1200-7e7989",
@@ -541,7 +542,8 @@
     "theme": "romance",
     "pass": 1,
     "fb_result_id": "1173646668567830",
-    "yt_result_id": "OEqC9BlnG9s"
+    "yt_result_id": "OEqC9BlnG9s",
+    "reach": 21.0
   },
   {
     "id": "sched-20260917T1430-63c7e6",
@@ -555,7 +557,8 @@
     "theme": "style",
     "pass": 1,
     "fb_result_id": "1849136929785557",
-    "yt_result_id": "xIbL8ldG20Q"
+    "yt_result_id": "xIbL8ldG20Q",
+    "reach": 176.0
   },
   {
     "id": "sched-20260917T1700-529f94",
@@ -569,7 +572,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1532911615258341",
-    "yt_result_id": "TLrJOrEA_9w"
+    "yt_result_id": "TLrJOrEA_9w",
+    "reach": 118.0
   },
   {
     "id": "sched-20260917T2000-946ab3",
@@ -583,7 +587,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1123116813717021",
-    "yt_result_id": "FioRjrzTGxo"
+    "yt_result_id": "FioRjrzTGxo",
+    "reach": 11.0
   },
   {
     "id": "sched-20260917T2300-5304b1",
