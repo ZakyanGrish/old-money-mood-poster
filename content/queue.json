@@ -602,7 +602,8 @@
     "theme": "style",
     "pass": 1,
     "fb_result_id": "2610206889382566",
-    "yt_result_id": "qM8rDXLe660"
+    "yt_result_id": "qM8rDXLe660",
+    "reach": 118.0
   },
   {
     "id": "story-20260918T1100-ace487",
@@ -613,7 +614,8 @@
     "posted_at": "2026-09-18T19:27:38.926512+00:00",
     "result_id": "18097141241451094",
     "source_public_id": "Comment_your_dream_job_DALpfhLsIZq",
-    "theme": "legacy"
+    "theme": "legacy",
+    "reach": 0.0
   },
   {
     "id": "sched-20260918T1200-ace487",
@@ -627,7 +629,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1754226142445984",
-    "yt_result_id": "o4Zj7k6e910"
+    "yt_result_id": "o4Zj7k6e910",
+    "reach": 16.0
   },
   {
     "id": "sched-20260918T1430-c61b26",
@@ -641,7 +644,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1769428671030848",
-    "yt_result_id": "vR0yR8z1vRo"
+    "yt_result_id": "vR0yR8z1vRo",
+    "reach": 202.0
   },
   {
     "id": "sched-20260918T1700-f09989",
@@ -655,7 +659,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1100762089268702",
-    "yt_result_id": "IKkRZHdLqEs"
+    "yt_result_id": "IKkRZHdLqEs",
+    "reach": 121.0
   },
   {
     "id": "story-20260919T1100-29bd36",
@@ -666,7 +671,8 @@
     "posted_at": "2026-09-19T17:21:24.788772+00:00",
     "result_id": "18115485890007975",
     "source_public_id": "Cashmere_season_DS7QLm9CL4r",
-    "theme": "style"
+    "theme": "style",
+    "reach": 0.0
   },
   {
     "id": "sched-20260919T1200-29bd36",
