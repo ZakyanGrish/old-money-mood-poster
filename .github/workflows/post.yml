@@ -94,7 +94,11 @@ jobs:
           ACTION=$(python -c "import json;print(json.load(open('content/status.json')).get('action',''))" 2>/dev/null || echo "")
           ITEM=$(python -c "import json;print(json.load(open('content/status.json')).get('item_id',''))" 2>/dev/null || echo "")
           if [ "$ACTION" != "failed" ] && [ "$ACTION" != "skipped-bad" ]; then
-            echo "No posting error this run (action=$ACTION)."
+            echo "No posting error this run (action=$ACTION) — closing any open error issues."
+            for N in $(gh issue list --state open --label error --json number --jq '.[].number'); do
+              gh issue comment "$N" --body "This run (\`$ACTION\`) came back clean — the item that failed either succeeded on a later retry or its slot was superseded by a schedule regeneration. Auto-closing." || true
+              gh issue close "$N" || true
+            done
             exit 0
           fi
           gh label create error --color B60205 --description "Poster hit an error" 2>/dev/null || true
