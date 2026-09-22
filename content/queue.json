@@ -686,7 +686,8 @@
     "theme": "style",
     "pass": 1,
     "fb_result_id": "1633120018419399",
-    "yt_result_id": "BKSkT4utsQA"
+    "yt_result_id": "BKSkT4utsQA",
+    "reach": 118.0
   },
   {
     "id": "sched-20260919T1700-706b93",
@@ -700,7 +701,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1085511907744557",
-    "yt_result_id": "d7nSkdxHOIA"
+    "yt_result_id": "d7nSkdxHOIA",
+    "reach": 130.0
   },
   {
     "id": "sched-20260919T2000-63c7e6",
@@ -714,7 +716,8 @@
     "theme": "style",
     "pass": 2,
     "fb_result_id": "1620533543045017",
-    "yt_result_id": "oTysJiAQmLI"
+    "yt_result_id": "oTysJiAQmLI",
+    "reach": 140.0
   },
   {
     "id": "sched-20260919T2300-47e763",
@@ -728,7 +731,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1799635321041798",
-    "yt_result_id": "vu1gTKqS954"
+    "yt_result_id": "vu1gTKqS954",
+    "reach": 149.0
   },
   {
     "id": "story-20260920T1100-8b7a62",
