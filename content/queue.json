@@ -743,7 +743,8 @@
     "posted_at": "2026-09-20T17:33:31.503716+00:00",
     "result_id": "17909808630536909",
     "source_public_id": "Best_type_of_romance_DAyMv0tsrTR",
-    "theme": "romance"
+    "theme": "romance",
+    "reach": 0.0
   },
   {
     "id": "sched-20260920T1200-8b7a62",
@@ -757,7 +758,8 @@
     "theme": "romance",
     "pass": 1,
     "fb_result_id": "964564823388174",
-    "yt_result_id": "agVEBshgQ9E"
+    "yt_result_id": "agVEBshgQ9E",
+    "reach": 160.0
   },
   {
     "id": "sched-20260920T1430-201e5c",
@@ -771,7 +773,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1142742244747142",
-    "yt_result_id": "cAVfKC0SD20"
+    "yt_result_id": "cAVfKC0SD20",
+    "reach": 0.0
   },
   {
     "id": "sched-20260920T1700-575416",
@@ -785,7 +788,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1965773640784116",
-    "yt_result_id": "R3TLUOR-fA8"
+    "yt_result_id": "R3TLUOR-fA8",
+    "reach": 114.0
   },
   {
     "id": "sched-20260920T2000-70a7ff",
@@ -799,7 +803,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1436131051734459",
-    "yt_result_id": "Utej7d4Ki8g"
+    "yt_result_id": "Utej7d4Ki8g",
+    "reach": 126.0
   },
   {
     "id": "sched-20260920T2300-a3dd69",
