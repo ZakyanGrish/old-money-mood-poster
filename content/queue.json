@@ -820,7 +820,8 @@
     "fail_count": 1,
     "last_error": "Container 17903001909570028 failed: Error: Media upload has failed with error code 2207076",
     "fb_result_id": "1659412845603030",
-    "yt_result_id": "ecaTF7eTSeE"
+    "yt_result_id": "ecaTF7eTSeE",
+    "reach": 118.0
   },
   {
     "id": "story-20260921T1100-500131",
@@ -831,7 +832,8 @@
     "posted_at": "2026-09-21T20:50:46.151148+00:00",
     "result_id": "18092548400170010",
     "source_public_id": "Which_destination_is_calling_you_this_summer_\ufe0f_DYo-oC6AHLc",
-    "theme": "travel"
+    "theme": "travel",
+    "reach": 0.0
   },
   {
     "id": "sched-20260921T1200-500131",
@@ -845,7 +847,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "4538167549646743",
-    "yt_result_id": "BEnTBTfyodQ"
+    "yt_result_id": "BEnTBTfyodQ",
+    "reach": 121.0
   },
   {
     "id": "sched-20260921T1430-2a46dd",
@@ -859,7 +862,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1585127345800924",
-    "yt_result_id": "s6v6AZSF3Lo"
+    "yt_result_id": "s6v6AZSF3Lo",
+    "reach": 125.0
   },
   {
     "id": "sched-20260921T1700-98da1f",
@@ -873,7 +877,8 @@
     "theme": "style",
     "pass": 1,
     "fb_result_id": "1107233448504334",
-    "yt_result_id": "2ZnEkX_NTWU"
+    "yt_result_id": "2ZnEkX_NTWU",
+    "reach": 119.0
   },
   {
     "id": "sched-20260921T2000-a5407e",
