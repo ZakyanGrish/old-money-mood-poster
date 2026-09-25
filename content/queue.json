@@ -892,7 +892,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1460258162676641",
-    "yt_result_id": "-iy3b1KWB4Y"
+    "yt_result_id": "-iy3b1KWB4Y",
+    "reach": 167.0
   },
   {
     "id": "story-20260922T1100-1a47e9",
@@ -903,7 +904,8 @@
     "posted_at": "2026-09-22T20:01:56.058514+00:00",
     "result_id": "18109847129234139",
     "source_public_id": "What_is_your_dream_car_DGVLy5wsEto",
-    "theme": "legacy"
+    "theme": "legacy",
+    "reach": 0.0
   },
   {
     "id": "sched-20260922T1430-1a47e9",
@@ -917,7 +919,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1959125488115583",
-    "yt_result_id": "6owXO76WnJM"
+    "yt_result_id": "6owXO76WnJM",
+    "reach": 136.0
   },
   {
     "id": "sched-20260922T2000-338f8a",
@@ -931,7 +934,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1127522312975609",
-    "yt_result_id": "H65ajVLzqUM"
+    "yt_result_id": "H65ajVLzqUM",
+    "reach": 131.0
   },
   {
     "id": "sched-20260922T2300-b83442",
@@ -945,7 +949,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1480391210664402",
-    "yt_result_id": "NVIft_1lhro"
+    "yt_result_id": "NVIft_1lhro",
+    "reach": 120.0
   },
   {
     "id": "story-20260923T1100-222dff",
