@@ -1033,7 +1033,8 @@
     "posted_at": "2026-09-24T18:31:48.772773+00:00",
     "result_id": "18129630859685007",
     "source_public_id": "Could_be_us_C8uJR0xtrW6",
-    "theme": "generic"
+    "theme": "generic",
+    "reach": 0.0
   },
   {
     "id": "sched-20260924T1200-b95805",
@@ -1047,7 +1048,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1047047025003761",
-    "yt_result_id": "wvaKiWt_iwQ"
+    "yt_result_id": "wvaKiWt_iwQ",
+    "reach": 117.0
   },
   {
     "id": "sched-20260924T1430-bfe717",
@@ -1061,7 +1063,8 @@
     "theme": "style",
     "pass": 1,
     "fb_result_id": "2197065857542712",
-    "yt_result_id": "PzWCJIQz0T4"
+    "yt_result_id": "PzWCJIQz0T4",
+    "reach": 120.0
   },
   {
     "id": "sched-20260924T1700-da9bf1",
@@ -1075,7 +1078,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1100648479569576",
-    "yt_result_id": "zHy-aHWal54"
+    "yt_result_id": "zHy-aHWal54",
+    "reach": 111.0
   },
   {
     "id": "sched-20260924T2000-247eeb",
@@ -1089,7 +1093,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1767982380914427",
-    "yt_result_id": "AAxl1P2qzlc"
+    "yt_result_id": "AAxl1P2qzlc",
+    "reach": 113.0
   },
   {
     "id": "sched-20260924T2300-3a8ca3",
