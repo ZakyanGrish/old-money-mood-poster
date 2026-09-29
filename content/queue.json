@@ -1207,7 +1207,8 @@
     "posted_at": "2026-09-26T22:22:49.070046+00:00",
     "result_id": "18106997767926135",
     "source_public_id": "Best_type_of_romance_DAyMv0tsrTR",
-    "theme": "romance"
+    "theme": "romance",
+    "reach": 0.0
   },
   {
     "id": "sched-20260926T1200-8b7a62",
@@ -1221,7 +1222,8 @@
     "theme": "romance",
     "pass": 2,
     "fb_result_id": "1031225273232590",
-    "yt_result_id": "19_i1F7om0Y"
+    "yt_result_id": "19_i1F7om0Y",
+    "reach": 115.0
   },
   {
     "id": "sched-20260926T1430-c69b7c",
@@ -1235,7 +1237,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1454382026583019",
-    "yt_result_id": "MpRay876QRY"
+    "yt_result_id": "MpRay876QRY",
+    "reach": 122.0
   },
   {
     "id": "sched-20260926T1700-d5824b",
