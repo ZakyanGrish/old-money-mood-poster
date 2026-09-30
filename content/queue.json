@@ -1252,7 +1252,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1613736940199897",
-    "yt_result_id": "VJ3Zy5OEl_k"
+    "yt_result_id": "VJ3Zy5OEl_k",
+    "reach": 126.0
   },
   {
     "id": "sched-20260926T2000-c61b26",
@@ -1266,7 +1267,8 @@
     "theme": "generic",
     "pass": 2,
     "fb_result_id": "28683577751272372",
-    "yt_result_id": "e4B8cPDQwkw"
+    "yt_result_id": "e4B8cPDQwkw",
+    "reach": 176.0
   },
   {
     "id": "story-20260927T1100-5ecbca",
@@ -1277,7 +1279,8 @@
     "posted_at": "2026-09-27T22:48:58.424229+00:00",
     "result_id": "18105576593258203",
     "source_public_id": "Which_one_have_you_been_before_\ufe0f_C2fCNkZMht1",
-    "theme": "generic"
+    "theme": "generic",
+    "reach": 0.0
   },
   {
     "id": "sched-20260927T1200-5ecbca",
@@ -1291,7 +1294,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1407428910836247",
-    "yt_result_id": "2IDuw07IQzo"
+    "yt_result_id": "2IDuw07IQzo",
+    "reach": 121.0
   },
   {
     "id": "sched-20260927T1700-871ac6",
