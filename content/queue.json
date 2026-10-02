@@ -1396,7 +1396,8 @@
     "theme": "style",
     "pass": 1,
     "fb_result_id": "4626533504297094",
-    "yt_result_id": "YEp_avUpY5M"
+    "yt_result_id": "YEp_avUpY5M",
+    "reach": 139.0
   },
   {
     "id": "story-20260929T1100-fbce8e",
@@ -1407,7 +1408,8 @@
     "posted_at": "2026-09-29T21:17:35.284915+00:00",
     "result_id": "17913037803495861",
     "source_public_id": "Everything_that_she_needs_C5VdZK4MGjb",
-    "theme": "generic"
+    "theme": "generic",
+    "reach": 0.0
   },
   {
     "id": "sched-20260929T1200-fbce8e",
@@ -1421,7 +1423,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1399463339021983",
-    "yt_result_id": "j-rA_1KGIGI"
+    "yt_result_id": "j-rA_1KGIGI",
+    "reach": 119.0
   },
   {
     "id": "sched-20260929T1430-9c35e8",
@@ -1435,7 +1438,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1098669195993033",
-    "yt_result_id": "ja9xfN-mGpE"
+    "yt_result_id": "ja9xfN-mGpE",
+    "reach": 116.0
   },
   {
     "id": "sched-20260929T1700-5fbba5",
@@ -1449,7 +1453,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "2087841961886152",
-    "yt_result_id": "hckGcmBhonU"
+    "yt_result_id": "hckGcmBhonU",
+    "reach": 111.0
   },
   {
     "id": "sched-20260929T2300-744a17",
