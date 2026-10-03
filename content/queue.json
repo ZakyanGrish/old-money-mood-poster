@@ -1468,7 +1468,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1405733665010256",
-    "yt_result_id": "qbRleZTA5r0"
+    "yt_result_id": "qbRleZTA5r0",
+    "reach": 117.0
   },
   {
     "id": "story-20260930T1100-5ecbca",
@@ -1479,7 +1480,8 @@
     "posted_at": "2026-09-30T21:17:32.336111+00:00",
     "result_id": "18399978106207005",
     "source_public_id": "Which_one_have_you_been_before_\ufe0f_C2fCNkZMht1",
-    "theme": "generic"
+    "theme": "generic",
+    "reach": 0.0
   },
   {
     "id": "sched-20260930T1200-5ecbca",
@@ -1493,7 +1495,8 @@
     "theme": "generic",
     "pass": 2,
     "fb_result_id": "3056020524733824",
-    "yt_result_id": "-1cOl7Sy2TE"
+    "yt_result_id": "-1cOl7Sy2TE",
+    "reach": 112.0
   },
   {
     "id": "sched-20260930T1430-3c86ca",
@@ -1507,7 +1510,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "2843171692729521",
-    "yt_result_id": "ighXjhr6SPk"
+    "yt_result_id": "ighXjhr6SPk",
+    "reach": 118.0
   },
   {
     "id": "sched-20260930T2000-3ddd9d",
