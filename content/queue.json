@@ -1813,7 +1813,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1100371265871558",
-    "yt_result_id": "idUTOiaeorc"
+    "yt_result_id": "idUTOiaeorc",
+    "reach": 121.0
   },
   {
     "id": "story-20261005T1100-bd7a16",
@@ -1824,7 +1825,8 @@
     "posted_at": "2026-10-05T21:33:55.196365+00:00",
     "result_id": "17905572957575097",
     "source_public_id": "Raised_with_Class_Born_into_Legacy_DFaA-CgMMbk",
-    "theme": "legacy"
+    "theme": "legacy",
+    "reach": 0.0
   },
   {
     "id": "sched-20261005T1430-bd7a16",
@@ -1838,7 +1840,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1640497014475805",
-    "yt_result_id": "J6aX6KeJljk"
+    "yt_result_id": "J6aX6KeJljk",
+    "reach": 143.0
   },
   {
     "id": "sched-20261005T1700-5821a6",
@@ -1852,7 +1855,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1083304901176916",
-    "yt_result_id": "Bd1iDbtJUfc"
+    "yt_result_id": "Bd1iDbtJUfc",
+    "reach": 127.0
   },
   {
     "id": "sched-20261005T2000-942c3b",
@@ -1866,7 +1870,8 @@
     "theme": "generic",
     "pass": 2,
     "fb_result_id": "2451504515377098",
-    "yt_result_id": "K1SPlyLbBEY"
+    "yt_result_id": "K1SPlyLbBEY",
+    "reach": 118.0
   },
   {
     "id": "story-20261006T1100-bfe717",
@@ -1877,7 +1882,8 @@
     "posted_at": "2026-10-06T17:35:44.967330+00:00",
     "result_id": "18113844086469248",
     "source_public_id": "The_Old_Money_Lifestyle_\ufe0f_C2rssbqMYqk",
-    "theme": "style"
+    "theme": "style",
+    "reach": 0.0
   },
   {
     "id": "sched-20261006T1200-bfe717",
