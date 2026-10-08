@@ -850,5 +850,11 @@
   "action": "posted",
   "item_id": "sched-20261007T2000-8863e0",
   "detail": "\u2192 IG+FB+YT"
+ },
+ {
+  "t": "2026-10-08T00:00:17.490327+00:00",
+  "action": "posted",
+  "item_id": "sched-20261007T2300-b9c37c",
+  "detail": "\u2192 IG+FB  |  YT failed: Expecting value: line 1 column 1 (char 0)"
  }
 ]
