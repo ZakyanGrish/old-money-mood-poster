@@ -1897,7 +1897,8 @@
     "theme": "style",
     "pass": 2,
     "fb_result_id": "1114042194708167",
-    "yt_result_id": "UDVlg0u_XRQ"
+    "yt_result_id": "UDVlg0u_XRQ",
+    "reach": 113.0
   },
   {
     "id": "sched-20261006T1430-5be0f3",
@@ -1911,7 +1912,8 @@
     "theme": "romance",
     "pass": 1,
     "fb_result_id": "2147552556184136",
-    "yt_result_id": "GxJuPOfgwDw"
+    "yt_result_id": "GxJuPOfgwDw",
+    "reach": 123.0
   },
   {
     "id": "sched-20261006T2000-63c7e6",
@@ -1925,7 +1927,8 @@
     "theme": "style",
     "pass": 3,
     "fb_result_id": "1629316768589711",
-    "yt_result_id": "AximaGy1SSI"
+    "yt_result_id": "AximaGy1SSI",
+    "reach": 119.0
   },
   {
     "id": "sched-20261006T2300-f5737e",
@@ -1939,7 +1942,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "38743105025333623",
-    "yt_result_id": "Kfee0uO8L1c"
+    "yt_result_id": "Kfee0uO8L1c",
+    "reach": 114.0
   },
   {
     "id": "story-20261007T1100-79a1ca",
@@ -1950,7 +1954,8 @@
     "posted_at": "2026-10-07T18:06:47.969219+00:00",
     "result_id": "17959277229233843",
     "source_public_id": "Dressing_classy_will_never_go_out_of_style_C4aV8zEMS_V",
-    "theme": "style"
+    "theme": "style",
+    "reach": 0.0
   },
   {
     "id": "sched-20261007T1700-79a1ca",
