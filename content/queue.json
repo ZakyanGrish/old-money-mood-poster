@@ -1969,7 +1969,8 @@
     "theme": "style",
     "pass": 1,
     "fb_result_id": "1619796589586782",
-    "yt_result_id": "DfOB4E0abIw"
+    "yt_result_id": "DfOB4E0abIw",
+    "reach": 143.0
   },
   {
     "id": "sched-20261007T2000-8863e0",
@@ -1983,7 +1984,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1175515934982300",
-    "yt_result_id": "RXOqg6o8Uh4"
+    "yt_result_id": "RXOqg6o8Uh4",
+    "reach": 120.0
   },
   {
     "id": "sched-20261007T2300-b9c37c",
@@ -1997,7 +1999,8 @@
     "theme": "legacy",
     "pass": 2,
     "fb_result_id": "942938395138145",
-    "yt_error": "Expecting value: line 1 column 1 (char 0)"
+    "yt_error": "Expecting value: line 1 column 1 (char 0)",
+    "reach": 129.0
   },
   {
     "id": "story-20261008T1100-f28660",
