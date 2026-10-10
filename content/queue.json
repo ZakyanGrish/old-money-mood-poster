@@ -2173,7 +2173,9 @@
     "posted_at": null,
     "result_id": null,
     "source_public_id": "Como_dreams_DIlGZ8xs2Cn",
-    "theme": "travel"
+    "theme": "travel",
+    "fail_count": 1,
+    "last_error": "Graph API error 500 on POST 17841477100835322/media_publish: An unexpected error has occurred. Please retry your request later. (type=OAuthException, code=2, subcode=None)"
   },
   {
     "id": "sched-20261010T1200-4aa30b",
