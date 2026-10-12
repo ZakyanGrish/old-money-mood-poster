@@ -2098,7 +2098,8 @@
     "posted_at": "2026-10-09T19:36:31.836814+00:00",
     "result_id": "18227602315326958",
     "source_public_id": "What_is_the_best_Old_Money_car_DCRSScxs2jJ",
-    "theme": "legacy"
+    "theme": "legacy",
+    "reach": 0.0
   },
   {
     "id": "sched-20261009T1200-0da2ae",
@@ -2112,7 +2113,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1807982907211374",
-    "yt_result_id": "RCot2lOYEMs"
+    "yt_result_id": "RCot2lOYEMs",
+    "reach": 128.0
   },
   {
     "id": "sched-20261009T1430-6d2130",
@@ -2126,7 +2128,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1118374584000374",
-    "yt_result_id": "fVkSteVmX-k"
+    "yt_result_id": "fVkSteVmX-k",
+    "reach": 119.0
   },
   {
     "id": "sched-20261009T1700-4aa30b",
@@ -2140,7 +2143,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1087331857530348",
-    "yt_result_id": "gHeWHLyZ-Vg"
+    "yt_result_id": "gHeWHLyZ-Vg",
+    "reach": 124.0
   },
   {
     "id": "sched-20261009T2000-a455f0",
@@ -2154,7 +2158,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1405441845032555",
-    "yt_result_id": "WuULzCMgTr0"
+    "yt_result_id": "WuULzCMgTr0",
+    "reach": 133.0
   },
   {
     "id": "sched-20261009T2300-1d5b36",
@@ -2168,7 +2173,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "940795212060034",
-    "yt_result_id": "iesCOScbVf4"
+    "yt_result_id": "iesCOScbVf4",
+    "reach": 117.0
   },
   {
     "id": "story-20261010T1100-4aa30b",
