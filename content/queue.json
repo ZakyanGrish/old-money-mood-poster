@@ -2187,7 +2187,8 @@
     "source_public_id": "Como_dreams_DIlGZ8xs2Cn",
     "theme": "travel",
     "fail_count": 1,
-    "last_error": "Graph API error 500 on POST 17841477100835322/media_publish: An unexpected error has occurred. Please retry your request later. (type=OAuthException, code=2, subcode=None)"
+    "last_error": "Graph API error 500 on POST 17841477100835322/media_publish: An unexpected error has occurred. Please retry your request later. (type=OAuthException, code=2, subcode=None)",
+    "reach": 0.0
   },
   {
     "id": "sched-20261010T1200-4aa30b",
@@ -2201,7 +2202,8 @@
     "theme": "travel",
     "pass": 2,
     "fb_result_id": "4350543605258934",
-    "yt_result_id": "mM0TbN4IcLg"
+    "yt_result_id": "mM0TbN4IcLg",
+    "reach": 124.0
   },
   {
     "id": "sched-20261010T1430-a949df",
@@ -2215,7 +2217,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1732808447786983",
-    "yt_result_id": "ekw28BhIp04"
+    "yt_result_id": "ekw28BhIp04",
+    "reach": 1309.0
   },
   {
     "id": "sched-20261010T2000-2a2499",
@@ -2229,7 +2232,8 @@
     "theme": "generic",
     "pass": 2,
     "fb_result_id": "2087746818548833",
-    "yt_result_id": "D6uP-puW7fQ"
+    "yt_result_id": "D6uP-puW7fQ",
+    "reach": 153.0
   },
   {
     "id": "story-20261011T1100-704000",
