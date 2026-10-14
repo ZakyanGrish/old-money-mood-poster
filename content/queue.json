@@ -2244,7 +2244,8 @@
     "posted_at": "2026-10-11T20:49:43.125306+00:00",
     "result_id": "18098721827083967",
     "source_public_id": "This_or_nothing_DFSVONNoL6E",
-    "theme": "generic"
+    "theme": "generic",
+    "reach": 0.0
   },
   {
     "id": "sched-20261011T1200-704000",
@@ -2258,7 +2259,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1776454350327159",
-    "yt_result_id": "d9kVqbGt_6s"
+    "yt_result_id": "d9kVqbGt_6s",
+    "reach": 182.0
   },
   {
     "id": "sched-20261011T1430-4bbe8f",
@@ -2272,7 +2274,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "2181423126143221",
-    "yt_result_id": "Xe-dPfkYOyQ"
+    "yt_result_id": "Xe-dPfkYOyQ",
+    "reach": 149.0
   },
   {
     "id": "sched-20261011T1700-f28660",
