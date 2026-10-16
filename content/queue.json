@@ -2361,7 +2361,8 @@
     "theme": "travel",
     "pass": 2,
     "fb_result_id": "1109430001487885",
-    "yt_result_id": "ysuG1cIAUDY"
+    "yt_result_id": "ysuG1cIAUDY",
+    "reach": 170.0
   },
   {
     "id": "sched-20261012T2000-3a82a1",
@@ -2375,7 +2376,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "2993288277687327",
-    "yt_result_id": "cuCrM12JnUI"
+    "yt_result_id": "cuCrM12JnUI",
+    "reach": 409.0
   },
   {
     "id": "story-20261013T1100-897e02",
@@ -2386,7 +2388,8 @@
     "posted_at": "2026-10-13T21:45:36.659527+00:00",
     "result_id": "18233998552320230",
     "source_public_id": "How_would_you_describe_Old_Money_parenting_in_one_word_Comment_below_C1sAjiuhz8k",
-    "theme": "legacy"
+    "theme": "legacy",
+    "reach": 0.0
   },
   {
     "id": "sched-20261013T1200-897e02",
@@ -2400,7 +2403,8 @@
     "theme": "legacy",
     "pass": 2,
     "fb_result_id": "2033216484017031",
-    "yt_result_id": "1BIY0gCfcs4"
+    "yt_result_id": "1BIY0gCfcs4",
+    "reach": 155.0
   },
   {
     "id": "sched-20261013T1430-b95805",
@@ -2414,7 +2418,8 @@
     "theme": "generic",
     "pass": 2,
     "fb_result_id": "1584059140422150",
-    "yt_result_id": "ndRY1aDCFXI"
+    "yt_result_id": "ndRY1aDCFXI",
+    "reach": 139.0
   },
   {
     "id": "sched-20261013T1700-2326a4",
@@ -2428,7 +2433,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1441235830753598",
-    "yt_result_id": "Y07kBccv6aA"
+    "yt_result_id": "Y07kBccv6aA",
+    "reach": 178.0
   },
   {
     "id": "sched-20261013T2000-1d25aa",
