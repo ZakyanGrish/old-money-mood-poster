@@ -2448,7 +2448,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "4563822027234103",
-    "yt_result_id": "R31oW9hjBEg"
+    "yt_result_id": "R31oW9hjBEg",
+    "reach": 132.0
   },
   {
     "id": "story-20261014T1100-794d53",
@@ -2459,7 +2460,8 @@
     "posted_at": "2026-10-14T20:29:52.713425+00:00",
     "result_id": "18111292796231038",
     "source_public_id": "Is_your_wardrobe_winter-proof_already_\ufe0f_C_8GKaosZZU",
-    "theme": "travel"
+    "theme": "travel",
+    "reach": 0.0
   },
   {
     "id": "sched-20261014T1200-794d53",
@@ -2473,7 +2475,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1107395491919847",
-    "yt_result_id": "1jA3_Q8ww3c"
+    "yt_result_id": "1jA3_Q8ww3c",
+    "reach": 127.0
   },
   {
     "id": "sched-20261014T1430-c2f92e",
@@ -2487,7 +2490,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "3123891204481752",
-    "yt_result_id": "1bhP5I3fS1E"
+    "yt_result_id": "1bhP5I3fS1E",
+    "reach": 151.0
   },
   {
     "id": "sched-20261014T1700-824bf1",
@@ -2501,7 +2505,8 @@
     "theme": "legacy",
     "pass": 2,
     "fb_result_id": "1518187733452030",
-    "yt_result_id": "zSIx8F0W0is"
+    "yt_result_id": "zSIx8F0W0is",
+    "reach": 431.0
   },
   {
     "id": "sched-20261014T2000-a509e7",
