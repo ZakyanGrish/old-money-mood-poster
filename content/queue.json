@@ -2520,7 +2520,8 @@
     "theme": "romance",
     "pass": 1,
     "fb_result_id": "3666602683478136",
-    "yt_result_id": "3l5iPkDGV08"
+    "yt_result_id": "3l5iPkDGV08",
+    "reach": 152.0
   },
   {
     "id": "sched-20261014T2300-3ddd9d",
@@ -2534,7 +2535,8 @@
     "theme": "legacy",
     "pass": 2,
     "fb_result_id": "1010849425362348",
-    "yt_result_id": "cRovoQaoVwQ"
+    "yt_result_id": "cRovoQaoVwQ",
+    "reach": 21.0
   },
   {
     "id": "story-20261015T1100-4f4306",
@@ -2545,7 +2547,8 @@
     "posted_at": "2026-10-15T22:53:19.671382+00:00",
     "result_id": "18005569571793912",
     "source_public_id": "Kissing_you_hallelujah_DXy82ProPbJ",
-    "theme": "generic"
+    "theme": "generic",
+    "reach": 0.0
   },
   {
     "id": "sched-20261015T1200-4f4306",
@@ -2559,7 +2562,8 @@
     "theme": "generic",
     "pass": 3,
     "fb_result_id": "1597482422114780",
-    "yt_result_id": "_G4fWYTrp3k"
+    "yt_result_id": "_G4fWYTrp3k",
+    "reach": 135.0
   },
   {
     "id": "sched-20261015T1430-9c35e8",
@@ -2573,7 +2577,8 @@
     "theme": "legacy",
     "pass": 2,
     "fb_result_id": "2344347252766163",
-    "yt_result_id": "Fz61E0PcxZU"
+    "yt_result_id": "Fz61E0PcxZU",
+    "reach": 133.0
   },
   {
     "id": "sched-20261015T2000-daca16",
