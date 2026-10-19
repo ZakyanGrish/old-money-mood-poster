@@ -2592,7 +2592,8 @@
     "theme": "legacy",
     "pass": 2,
     "fb_result_id": "1471642434809686",
-    "yt_result_id": "91ZMyGNfFME"
+    "yt_result_id": "91ZMyGNfFME",
+    "reach": 153.0
   },
   {
     "id": "sched-20261015T2300-837e2e",
@@ -2606,7 +2607,8 @@
     "theme": "style",
     "pass": 2,
     "fb_result_id": "2285898072230525",
-    "yt_result_id": "hTaJH4orvHM"
+    "yt_result_id": "hTaJH4orvHM",
+    "reach": 138.0
   },
   {
     "id": "story-20261016T1100-4e7b74",
@@ -2617,7 +2619,8 @@
     "posted_at": "2026-10-16T22:31:43.451111+00:00",
     "result_id": "18111767662895320",
     "source_public_id": "Italy_together_DW3-lKPiDT5",
-    "theme": "travel"
+    "theme": "travel",
+    "reach": 0.0
   },
   {
     "id": "sched-20261016T1200-4e7b74",
@@ -2631,7 +2634,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1153587647143638",
-    "yt_result_id": "eyRFwxA79TM"
+    "yt_result_id": "eyRFwxA79TM",
+    "reach": 133.0
   },
   {
     "id": "sched-20261016T1700-f0cd28",
@@ -2645,7 +2649,8 @@
     "theme": "style",
     "pass": 1,
     "fb_result_id": "978666457973631",
-    "yt_result_id": "gWw9b3aqlj8"
+    "yt_result_id": "gWw9b3aqlj8",
+    "reach": 139.0
   },
   {
     "id": "sched-20261016T2000-c69b7c",
@@ -2659,7 +2664,8 @@
     "theme": "generic",
     "pass": 2,
     "fb_result_id": "2174150513982164",
-    "yt_result_id": "-fbxi9mieok"
+    "yt_result_id": "-fbxi9mieok",
+    "reach": 138.0
   },
   {
     "id": "story-20261017T1100-702b58",
