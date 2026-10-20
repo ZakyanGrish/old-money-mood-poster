@@ -2676,7 +2676,8 @@
     "posted_at": "2026-10-17T19:03:49.951177+00:00",
     "result_id": "17905345218352410",
     "source_public_id": "Which_spot_did_we_miss_\ufe0f_DLHlKIsowem",
-    "theme": "generic"
+    "theme": "generic",
+    "reach": 0.0
   },
   {
     "id": "sched-20261017T1200-702b58",
@@ -2690,7 +2691,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "2159011341491566",
-    "yt_result_id": "nzo5oLxtAUM"
+    "yt_result_id": "nzo5oLxtAUM",
+    "reach": 125.0
   },
   {
     "id": "sched-20261017T1430-f1ec90",
@@ -2704,7 +2706,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "981855244276408",
-    "yt_result_id": "hpsAgLxd-f4"
+    "yt_result_id": "hpsAgLxd-f4",
+    "reach": 186.0
   },
   {
     "id": "sched-20261017T1700-512f5c",
@@ -2718,7 +2721,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "2142508833292254",
-    "yt_result_id": "wcbjTJvAqQE"
+    "yt_result_id": "wcbjTJvAqQE",
+    "reach": 135.0
   },
   {
     "id": "sched-20261017T2000-5e4898",
@@ -2732,7 +2736,8 @@
     "theme": "romance",
     "pass": 1,
     "fb_result_id": "1116343237558558",
-    "yt_result_id": "t29KqYESmbs"
+    "yt_result_id": "t29KqYESmbs",
+    "reach": 159.0
   },
   {
     "id": "sched-20261017T2300-69d480",
