@@ -2935,13 +2935,15 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868385/old_money_love_3_DTklPkQiH7q.mp4",
     "caption": "old money love 3 \ud83d\udc51\n\n#oldmoney #oldmoneyaesthetic #quietluxury #oldmoneymindset #oldmoneyvalues",
     "not_before": "2026-10-20T23:00:00+00:00",
-    "posted_at": null,
-    "result_id": null,
+    "posted_at": "2026-10-21T20:27:50.787479+00:00",
+    "result_id": "18098456237408075",
     "source_public_id": "old_money_love_3_DTklPkQiH7q",
     "theme": "legacy",
     "pass": 2,
     "fail_count": 1,
-    "last_error": "Graph API error 500 on POST 17841477100835322/media_publish: An unknown error occurred (type=None, code=1, subcode=None)"
+    "last_error": "Graph API error 500 on POST 17841477100835322/media_publish: An unknown error occurred (type=None, code=1, subcode=None)",
+    "fb_result_id": "28818622954454718",
+    "yt_result_id": "M1GNrry2tZg"
   },
   {
     "id": "story-20261021T1100-d5824b",
