@@ -2939,7 +2939,9 @@
     "result_id": null,
     "source_public_id": "old_money_love_3_DTklPkQiH7q",
     "theme": "legacy",
-    "pass": 2
+    "pass": 2,
+    "fail_count": 1,
+    "last_error": "Graph API error 500 on POST 17841477100835322/media_publish: An unknown error occurred (type=None, code=1, subcode=None)"
   },
   {
     "id": "story-20261021T1100-d5824b",
