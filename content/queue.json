@@ -2751,7 +2751,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1837674961012517",
-    "yt_result_id": "tRdMGcnuDlw"
+    "yt_result_id": "tRdMGcnuDlw",
+    "reach": 146.0
   },
   {
     "id": "story-20261018T1100-5074da",
@@ -2762,7 +2763,8 @@
     "posted_at": "2026-10-18T22:12:57.760591+00:00",
     "result_id": "18376999804301128",
     "source_public_id": "Vision_comfort_DP-5F-XiFLN",
-    "theme": "generic"
+    "theme": "generic",
+    "reach": 0.0
   },
   {
     "id": "sched-20261018T1430-5074da",
@@ -2776,7 +2778,8 @@
     "theme": "generic",
     "pass": 2,
     "fb_result_id": "1835376311142650",
-    "yt_result_id": "gWRRd_WpheU"
+    "yt_result_id": "gWRRd_WpheU",
+    "reach": 165.0
   },
   {
     "id": "sched-20261018T1700-6205e6",
