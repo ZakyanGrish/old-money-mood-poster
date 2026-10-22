@@ -3025,7 +3025,9 @@
     "result_id": null,
     "source_public_id": "Dolce_Vita_DBi6r9Iscu1",
     "theme": "legacy",
-    "pass": 2
+    "pass": 2,
+    "fail_count": 1,
+    "last_error": "Graph API error 500 on POST 17841477100835322/media_publish: An unexpected error has occurred. Please retry your request later. (type=OAuthException, code=2, subcode=None)"
   },
   {
     "id": "sched-20261022T2000-a4f024",

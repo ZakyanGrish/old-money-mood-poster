@@ -1300,5 +1300,11 @@
   "action": "posted",
   "item_id": "story-20261022T1100-706b93",
   "detail": "\u2192 IG"
+ },
+ {
+  "t": "2026-10-22T22:57:33.619620+00:00",
+  "action": "failed",
+  "item_id": "sched-20261022T1430-706b93",
+  "detail": "Graph API error 500 on POST 17841477100835322/media_publish: An unexpected error has occurred. Please retry your request later. (type=OAuthException, code=2, subcode=None)"
  }
 ]
