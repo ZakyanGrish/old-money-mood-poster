@@ -2954,7 +2954,8 @@
     "fail_count": 1,
     "last_error": "Graph API error 500 on POST 17841477100835322/media_publish: An unknown error occurred (type=None, code=1, subcode=None)",
     "fb_result_id": "28818622954454718",
-    "yt_result_id": "M1GNrry2tZg"
+    "yt_result_id": "M1GNrry2tZg",
+    "reach": 20.0
   },
   {
     "id": "story-20261021T1100-d5824b",
@@ -2965,7 +2966,8 @@
     "posted_at": "2026-10-21T23:01:00.187061+00:00",
     "result_id": "18044262206835112",
     "source_public_id": "Caviar_before_candy_DOsiJ31iNaG",
-    "theme": "generic"
+    "theme": "generic",
+    "reach": 0.0
   },
   {
     "id": "sched-20261021T1200-d5824b",
@@ -2979,7 +2981,8 @@
     "theme": "generic",
     "pass": 3,
     "fb_result_id": "1113171301219306",
-    "yt_result_id": "aP55SMu9C_A"
+    "yt_result_id": "aP55SMu9C_A",
+    "reach": 112.0
   },
   {
     "id": "sched-20261021T1430-b75495",
@@ -2993,7 +2996,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1601227614547444",
-    "yt_result_id": "ZLaxRwpNKfU"
+    "yt_result_id": "ZLaxRwpNKfU",
+    "reach": 114.0
   },
   {
     "id": "sched-20261021T2300-201e5c",
