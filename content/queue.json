@@ -3011,7 +3011,8 @@
     "theme": "generic",
     "pass": 2,
     "fb_result_id": "1127911176637185",
-    "yt_result_id": "ULgTUMspLiQ"
+    "yt_result_id": "ULgTUMspLiQ",
+    "reach": 0.0
   },
   {
     "id": "story-20261022T1100-706b93",
@@ -3022,7 +3023,8 @@
     "posted_at": "2026-10-22T20:26:17.446273+00:00",
     "result_id": "17962121747998826",
     "source_public_id": "Dolce_Vita_DBi6r9Iscu1",
-    "theme": "legacy"
+    "theme": "legacy",
+    "reach": 0.0
   },
   {
     "id": "sched-20261022T1430-706b93",
@@ -3038,7 +3040,8 @@
     "fail_count": 1,
     "last_error": "Graph API error 500 on POST 17841477100835322/media_publish: An unexpected error has occurred. Please retry your request later. (type=OAuthException, code=2, subcode=None)",
     "fb_result_id": "1835306284336255",
-    "yt_result_id": "9xkPWm_qxo4"
+    "yt_result_id": "9xkPWm_qxo4",
+    "reach": 0.0
   },
   {
     "id": "sched-20261022T2000-a4f024",
@@ -3052,7 +3055,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1583367696412264",
-    "yt_result_id": "S0VDjBb1ybw"
+    "yt_result_id": "S0VDjBb1ybw",
+    "reach": 0.0
   },
   {
     "id": "sched-20261022T2300-824bf1",
