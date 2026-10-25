@@ -3184,13 +3184,14 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868721/The_Classy_Lifestyle_%EF%B8%8F_C3cqrLyMaSq.mp4",
     "caption": "The Classy Lifestyle \u231a\n\nFollow for more of this.\n\n#oldmoney #oldmoneyaesthetic #quietluxury #oldmoneystyle #timelessstyle",
     "not_before": "2026-10-24T23:00:00+00:00",
-    "posted_at": null,
+    "posted_at": "2026-10-25T19:27:49.774743+00:00",
     "result_id": null,
     "source_public_id": "The_Classy_Lifestyle_\ufe0f_C3cqrLyMaSq",
     "theme": "style",
     "pass": 2,
-    "fail_count": 2,
-    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)"
+    "fail_count": 3,
+    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)",
+    "skipped": true
   },
   {
     "id": "story-20261025T1100-bfe717",
