@@ -1372,5 +1372,11 @@
   "action": "posted",
   "item_id": "sched-20261024T2000-247eeb",
   "detail": "\u2192 IG+FB+YT"
+ },
+ {
+  "t": "2026-10-25T15:14:53.433674+00:00",
+  "action": "failed",
+  "item_id": "sched-20261024T2300-5304b1",
+  "detail": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, cod"
  }
 ]
