@@ -3154,7 +3154,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "2122845278598045",
-    "yt_result_id": "S6Anb5cyTxs"
+    "yt_result_id": "S6Anb5cyTxs",
+    "reach": 0.0
   },
   {
     "id": "sched-20261024T1700-4fc15e",
@@ -3168,7 +3169,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "2303999120354878",
-    "yt_result_id": "bVQzutXU5Wo"
+    "yt_result_id": "bVQzutXU5Wo",
+    "reach": 0.0
   },
   {
     "id": "sched-20261024T2000-247eeb",
@@ -3182,7 +3184,8 @@
     "theme": "generic",
     "pass": 2,
     "fb_result_id": "1691622242572525",
-    "yt_result_id": "Lmp-PTiSzbw"
+    "yt_result_id": "Lmp-PTiSzbw",
+    "reach": 0.0
   },
   {
     "id": "sched-20261024T2300-5304b1",
