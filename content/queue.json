@@ -3237,13 +3237,14 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868737/What_s_on_your_agenda_for_the_season_%EF%B8%8F_C1pbxkaAiKh.mp4",
     "caption": "What's on your agenda for the season\n\nTag someone who'd get it.\n\n#oldmoney #oldmoneyaesthetic #quietluxury #oldmoneystyle #timelesselegance",
     "not_before": "2026-10-25T20:00:00+00:00",
-    "posted_at": null,
+    "posted_at": "2026-10-27T19:32:15.569598+00:00",
     "result_id": null,
     "source_public_id": "What_s_on_your_agenda_for_the_season_\ufe0f_C1pbxkaAiKh",
     "theme": "generic",
     "pass": 2,
-    "fail_count": 2,
-    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)"
+    "fail_count": 3,
+    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)",
+    "skipped": true
   },
   {
     "id": "sched-20261025T2300-bb68b1",
