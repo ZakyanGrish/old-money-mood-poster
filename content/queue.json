@@ -3252,13 +3252,14 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868573/The_perfect_Old_Money_place_%EF%B8%8F_DE1oDIGs5K6.mp4",
     "caption": "The perfect Old Money place \ud83d\udc51\n\nDrop a \ud83e\udd0d if you agree.\n\n#oldmoney #oldmoneyaesthetic #quietluxury #legacywealth #oldmoneymindset",
     "not_before": "2026-10-25T23:00:00+00:00",
-    "posted_at": null,
+    "posted_at": "2026-10-28T01:55:41.454352+00:00",
     "result_id": null,
     "source_public_id": "The_perfect_Old_Money_place_\ufe0f_DE1oDIGs5K6",
     "theme": "legacy",
     "pass": 2,
-    "fail_count": 2,
-    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)"
+    "fail_count": 3,
+    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)",
+    "skipped": true
   },
   {
     "id": "story-20261026T1100-bfe717",
