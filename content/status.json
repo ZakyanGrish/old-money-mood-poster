@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-28T19:43:20.671770+00:00",
-  "action": "failed",
+  "checked_at": "2026-10-28T21:31:21.700942+00:00",
+  "action": "skipped-bad",
   "item_id": "story-20261026T1100-bfe717",
   "fresh_remaining": 8955,
   "low_queue": false

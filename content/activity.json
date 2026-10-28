@@ -1474,5 +1474,11 @@
   "action": "failed",
   "item_id": "story-20261026T1100-bfe717",
   "detail": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, cod"
+ },
+ {
+  "t": "2026-10-28T21:31:21.700942+00:00",
+  "action": "skipped-bad",
+  "item_id": "story-20261026T1100-bfe717",
+  "detail": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, cod"
  }
 ]
