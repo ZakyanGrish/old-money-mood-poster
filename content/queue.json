@@ -3296,13 +3296,14 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868399/Vision_comfort_DP-5F-XiFLN.mp4",
     "caption": "Vision comfort \ud83d\udd4a\ufe0f\n\n#oldmoney #oldmoneyaesthetic #quietluxury #oldmoneystyle #timelesselegance",
     "not_before": "2026-10-26T17:00:00+00:00",
-    "posted_at": null,
+    "posted_at": "2026-10-29T23:47:22.003577+00:00",
     "result_id": null,
     "source_public_id": "Vision_comfort_DP-5F-XiFLN",
     "theme": "generic",
     "pass": 3,
-    "fail_count": 2,
-    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)"
+    "fail_count": 3,
+    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)",
+    "skipped": true
   },
   {
     "id": "sched-20261026T2300-a8fe15",
