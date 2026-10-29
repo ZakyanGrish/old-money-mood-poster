@@ -3300,7 +3300,9 @@
     "result_id": null,
     "source_public_id": "Vision_comfort_DP-5F-XiFLN",
     "theme": "generic",
-    "pass": 3
+    "pass": 3,
+    "fail_count": 1,
+    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)"
   },
   {
     "id": "sched-20261026T2300-a8fe15",
