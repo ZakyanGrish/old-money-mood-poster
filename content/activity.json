@@ -1504,5 +1504,11 @@
   "action": "failed",
   "item_id": "sched-20261026T1700-5074da",
   "detail": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, cod"
+ },
+ {
+  "t": "2026-10-29T21:36:42.949602+00:00",
+  "action": "failed",
+  "item_id": "sched-20261026T1700-5074da",
+  "detail": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, cod"
  }
 ]
