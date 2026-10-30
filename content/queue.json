@@ -3330,7 +3330,7 @@
     "result_id": null,
     "source_public_id": "Pure_Elegance_DVoKLsHCF3T",
     "theme": "generic",
-    "fail_count": 1,
+    "fail_count": 2,
     "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)"
   },
   {
