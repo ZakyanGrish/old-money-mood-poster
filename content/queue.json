@@ -3370,13 +3370,14 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868408/What_s_your_future_baby_s_name_going_to_be_DMvNXIbtM2l.mp4",
     "caption": "What's your future baby s name going to be \ud83d\udd70\ufe0f\n\n#oldmoney #oldmoneyaesthetic #quietluxury #legacywealth #generationalwealth",
     "not_before": "2026-10-27T23:00:00+00:00",
-    "posted_at": null,
+    "posted_at": "2026-11-01T23:22:27.393697+00:00",
     "result_id": null,
     "source_public_id": "What_s_your_future_baby_s_name_going_to_be_DMvNXIbtM2l",
     "theme": "legacy",
     "pass": 2,
-    "fail_count": 2,
-    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)"
+    "fail_count": 3,
+    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)",
+    "skipped": true
   },
   {
     "id": "story-20261028T1100-a949df",
