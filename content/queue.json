@@ -3355,13 +3355,14 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868692/This_is_your_sign_to_book_that_trip_%EF%B8%8F_C8Egv0XslQh.mp4",
     "caption": "This is your sign to book that trip \ud83d\udd4a\ufe0f\n\n#oldmoney #oldmoneyaesthetic #quietluxury #oldmoneystyle #timelesselegance",
     "not_before": "2026-10-27T20:00:00+00:00",
-    "posted_at": null,
+    "posted_at": "2026-11-01T17:23:50.298455+00:00",
     "result_id": null,
     "source_public_id": "This_is_your_sign_to_book_that_trip_\ufe0f_C8Egv0XslQh",
     "theme": "generic",
     "pass": 1,
-    "fail_count": 2,
-    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)"
+    "fail_count": 3,
+    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)",
+    "skipped": true
   },
   {
     "id": "sched-20261027T2300-946ab3",
