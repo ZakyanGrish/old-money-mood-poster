@@ -3419,7 +3419,7 @@
     "source_public_id": "Join_the_legacy_of_enduring_sophistication._C0t_x0XpUQl",
     "theme": "legacy",
     "pass": 1,
-    "fail_count": 1,
+    "fail_count": 2,
     "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)"
   },
   {
