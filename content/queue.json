@@ -3414,13 +3414,14 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868738/Join_the_legacy_of_enduring_sophistication._C0t_x0XpUQl.mp4",
     "caption": "Join the legacy of enduring sophistication\n\n#oldmoney #oldmoneyaesthetic #quietluxury #legacywealth #generationalwealth",
     "not_before": "2026-10-28T14:30:00+00:00",
-    "posted_at": null,
+    "posted_at": "2026-11-03T22:13:03.972636+00:00",
     "result_id": null,
     "source_public_id": "Join_the_legacy_of_enduring_sophistication._C0t_x0XpUQl",
     "theme": "legacy",
     "pass": 1,
-    "fail_count": 2,
-    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)"
+    "fail_count": 3,
+    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)",
+    "skipped": true
   },
   {
     "id": "sched-20261028T1700-892ea1",
