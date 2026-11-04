@@ -3448,7 +3448,9 @@
     "result_id": null,
     "source_public_id": "Vintage_hearts_only_DQvyxQoCLVU",
     "theme": "generic",
-    "pass": 2
+    "pass": 2,
+    "fail_count": 1,
+    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)"
   },
   {
     "id": "story-20261029T1100-979351",
