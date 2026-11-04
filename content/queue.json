@@ -3429,13 +3429,14 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868270/Somewhere_in_Italy_DcQymvyNEeO.mp4",
     "caption": "Somewhere in Italy\n\n#oldmoney #oldmoneyaesthetic #quietluxury #jetset #rivierastyle",
     "not_before": "2026-10-28T17:00:00+00:00",
-    "posted_at": null,
+    "posted_at": "2026-11-04T19:03:21.008214+00:00",
     "result_id": null,
     "source_public_id": "Somewhere_in_Italy_DcQymvyNEeO",
     "theme": "travel",
     "pass": 2,
-    "fail_count": 2,
-    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)"
+    "fail_count": 3,
+    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)",
+    "skipped": true
   },
   {
     "id": "sched-20261028T2300-6b9cb5",

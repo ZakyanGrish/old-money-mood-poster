@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-11-04T02:49:53.020631+00:00",
-  "action": "failed",
+  "checked_at": "2026-11-04T19:03:21.008214+00:00",
+  "action": "skipped-bad",
   "item_id": "sched-20261028T1700-892ea1",
   "fresh_remaining": 8944,
   "low_queue": false
