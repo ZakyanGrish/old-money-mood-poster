@@ -3444,13 +3444,14 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868396/Vintage_hearts_only_DQvyxQoCLVU.mp4",
     "caption": "Vintage hearts only\n\nWhich one are you?\n\n#oldmoney #oldmoneyaesthetic #quietluxury #oldmoneystyle #timelesselegance",
     "not_before": "2026-10-28T23:00:00+00:00",
-    "posted_at": null,
+    "posted_at": "2026-11-05T00:43:29.042018+00:00",
     "result_id": null,
     "source_public_id": "Vintage_hearts_only_DQvyxQoCLVU",
     "theme": "generic",
     "pass": 2,
-    "fail_count": 2,
-    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)"
+    "fail_count": 3,
+    "last_error": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons. (type=OAuthException, code=190, subcode=460)",
+    "skipped": true
   },
   {
     "id": "story-20261029T1100-979351",
