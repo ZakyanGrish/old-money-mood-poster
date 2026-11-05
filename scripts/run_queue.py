@@ -81,6 +81,12 @@ def _fresh_remaining(items: list, now: dt.datetime) -> int:
     )
 
 
+def _is_auth_error(err: Exception) -> bool:
+    """True for Graph API token failures (code 190: expired/invalidated/revoked)."""
+    s = str(err)
+    return "code=190" in s or "Error validating access token" in s
+
+
 def _post_item(client: MetaClient, ig_user_id: str, item: dict) -> dict:
     t = (item.get("type") or "").lower()
     if t == "reel":
@@ -228,6 +234,14 @@ def main(argv=None) -> int:
             time.sleep(15)
             res = _post_item(client, acct.ig_user_id, target)
     except (MetaError, KeyError) as e:
+        if _is_auth_error(e):
+            # The access token itself is dead (password change, security reset,
+            # revoked app). That says nothing about THIS item, so don't count a
+            # failure against it and never skip it -- leave the queue untouched
+            # and stop loudly until the token is replaced.
+            _write_status("auth-error", None, fresh_left, now, detail=str(e)[:240])
+            print("AUTH ERROR -- Meta access token is invalid; queue left untouched: %s" % e)
+            return 1
         target["fail_count"] = int(target.get("fail_count", 0)) + 1
         target["last_error"] = str(e)
         give_up = target["fail_count"] >= MAX_FAILS

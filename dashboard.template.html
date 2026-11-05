@@ -118,7 +118,7 @@
   .log .tag{font-family:"IBM Plex Mono",monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:.06em}
   .log .tag.posted,.log .tag.recycled{color:var(--ok)}
   .log .tag.idle{color:var(--ink-dim)}
-  .log .tag.failed,.log .tag.skipped-bad{color:var(--bad)}
+  .log .tag.failed,.log .tag.skipped-bad,.log .tag.auth-error{color:var(--bad)}
   .log .tag.low-queue{color:var(--warn)}
   .log .detail{color:var(--ink)}
   .log .detail.err{color:var(--bad)}
@@ -223,7 +223,9 @@
   // alert banner
   var st=D.status||{}, recentErr=(D.activity||[]).slice(-30).filter(function(a){return a.action==="failed"||a.action==="skipped-bad";});
   var ab=document.getElementById("alert");
-  if(st.action==="failed"||st.action==="skipped-bad"){ ab.className="alert bad";
+  if(st.action==="auth-error"){ ab.className="alert bad";
+    ab.textContent="POSTING IS STOPPED: the Meta access token was invalidated (password change or Facebook security reset). Nothing is lost — the queue is paused untouched. Ask Claude to re-authorize Meta."; }
+  else if(st.action==="failed"||st.action==="skipped-bad"){ ab.className="alert bad";
     ab.textContent="Last run: "+st.action.toUpperCase()+" on "+(st.item_id||"?")+". Instagram post may not have gone out — check GitHub Issues (an alert issue was opened)."; }
   else if(st.low_queue){ ab.className="alert warn"; ab.textContent="Content queue is low ("+nf(st.fresh_remaining)+" left). Add more clips soon."; }
   else if(recentErr.length){ ab.className="alert warn"; ab.textContent=recentErr.length+" failed/skipped item(s) in the last 30 events — see the log below. Posting is otherwise healthy."; }
@@ -239,7 +241,7 @@
   // activity log
   var lg=(D.activity||[]).slice().reverse().slice(0,25);
   document.getElementById("log").innerHTML = lg.map(function(a){
-    var isErr=a.action==="failed"||a.action==="skipped-bad";
+    var isErr=a.action==="failed"||a.action==="skipped-bad"||a.action==="auth-error";
     return '<li><span class="when">'+esc(dLog(a.t))+' ET</span>'+
       '<span class="tag '+esc(a.action)+'">'+esc(a.action)+'</span>'+
       '<span class="detail'+(isErr?' err':'')+'">'+esc(a.item_id||"")+(a.detail?'  '+esc(a.detail):'')+'</span></li>';
