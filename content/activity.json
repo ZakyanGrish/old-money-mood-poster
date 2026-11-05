@@ -1708,5 +1708,11 @@
   "action": "posted",
   "item_id": "sched-20261105T1430-8863e0",
   "detail": "\u2192 IG+FB+YT"
+ },
+ {
+  "t": "2026-11-05T19:13:29.393155+00:00",
+  "action": "auth-error",
+  "item_id": null,
+  "detail": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: Session has expired on Thursday, 05-Nov-26 06:00:00 PST. The current time is Thursday, 05-Nov-26 11:13:29 PST. (type=OAuthException, code=190, subcode=463)"
  }
 ]
