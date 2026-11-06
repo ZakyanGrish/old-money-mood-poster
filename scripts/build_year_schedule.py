@@ -97,6 +97,7 @@ def enrich_caption(hook: str, rng: random.Random) -> str:
 EXCLUDE_IDS = {"omm/d5hnlmlpryzabctndrsm"}
 EXCLUDE_PREFIXES = ("samples/", "omm/")
 MIN_WIDTH = 700   # below this it's a visibly softer/lower-res clip than the 720x1280 norm
+MIN_BYTES = 1_000_000   # at 720x1280, tiny files are over-compressed/blurry (reach rises steeply with file size)
 
 
 def fetch_videos() -> list:
@@ -126,6 +127,8 @@ def fetch_videos() -> list:
         if v["public_id"] not in EXCLUDE_IDS
         and not v["public_id"].startswith(EXCLUDE_PREFIXES)
         and (v.get("width") or 0) >= MIN_WIDTH
+        and (v.get("height") or 0) > (v.get("width") or 0)      # portrait only; landscape crops badly in Reels
+        and (v.get("bytes") or 0) >= MIN_BYTES
     ]
     return keep
 
@@ -227,6 +230,35 @@ def theme_weights(history: list, min_samples: int = 8) -> dict:
     return weights
 
 
+def video_boosts(history: list) -> dict:
+    """public_id -> repeat multiplier, from the best measured reach any past post of that video got.
+
+    Proven winners come around ~3x as often (the 21-day holdback still stops back-to-back repeats);
+    decent performers ~2x; everything else stays at 1x. Needs real reach numbers, so a fresh
+    library with no history is unaffected.
+    """
+    best: dict = {}
+    for it in history:
+        pid, r = it.get("source_public_id"), it.get("reach")
+        if pid and r is not None and it.get("type") == "reel":
+            best[pid] = max(best.get(pid, 0), r)
+    return {pid: (3.0 if r >= 1000 else 2.0 if r >= 300 else 1.0) for pid, r in best.items()}
+
+
+def _spread(order: list, gap: int = 12) -> list:
+    """Reorder so the same video isn't repeated within `gap` positions (boosted videos appear several times)."""
+    out, pending = [], list(order)
+    while pending:
+        recent = {v["public_id"] for v in out[-gap:]}
+        for j, v in enumerate(pending):
+            if v["public_id"] not in recent:
+                out.append(pending.pop(j))
+                break
+        else:
+            out.append(pending.pop(0))
+    return out
+
+
 def build(days: int, recent_pids: set = frozenset(), history: list = ()) -> list:
     vids = fetch_videos()
     if not vids:
@@ -246,6 +278,7 @@ def build(days: int, recent_pids: set = frozenset(), history: list = ()) -> list
     # enough posted history to say so; every video still gets at least one copy
     # per pass, so nothing is ever excluded -- just less frequent.
     weights = theme_weights(list(history))
+    boosts = video_boosts(list(history))
 
     # Bucket the library by season so a September run doesn't surface ski trips.
     # Each bucket cycles independently (full rotation within it over time); which
@@ -261,12 +294,13 @@ def build(days: int, recent_pids: set = frozenset(), history: list = ()) -> list
         weighted = []
         for v in bucket_vids:
             w = weights.get(theme_of(caption_from_public_id(v["public_id"])), 1.0)
-            weighted.extend([v] * max(1, round(w * 10)))
+            size_q = 1.3 if (v.get("bytes") or 0) >= 2_500_000 else 1.0    # sharper clips reach ~4x more
+            weighted.extend([v] * max(1, round(w * 10 * boosts.get(v["public_id"], 1.0) * size_q)))
         out: list = []
         while len(out) < total + len(bucket_vids):    # buffer for skip-forward
             deck = weighted[:]
             rng.shuffle(deck)
-            out.extend(deck)
+            out.extend(_spread(deck))
         return out
 
     orders = {name: _make_order(bv) for name, bv in buckets.items()}
