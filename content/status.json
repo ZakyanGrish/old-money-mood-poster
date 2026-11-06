@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-11-06T02:58:31.621032+00:00",
-  "action": "auth-error",
-  "item_id": null,
-  "fresh_remaining": 9134,
+  "checked_at": "2026-11-06T17:55:53.962566+00:00",
+  "action": "posted",
+  "item_id": "sched-20261105T1700-98da1f",
+  "fresh_remaining": 9133,
   "low_queue": false
 }
