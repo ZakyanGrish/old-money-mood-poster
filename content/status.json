@@ -1,7 +1,7 @@
 {
-  "checked_at": "2026-11-06T17:55:53.962566+00:00",
-  "action": "posted",
-  "item_id": "sched-20261105T1700-98da1f",
-  "fresh_remaining": 9133,
+  "checked_at": "2026-11-06T18:40:05.328696+00:00",
+  "action": "recycled",
+  "item_id": "recycle-2026-11-06-9242805e2c54",
+  "fresh_remaining": 9121,
   "low_queue": false
 }
