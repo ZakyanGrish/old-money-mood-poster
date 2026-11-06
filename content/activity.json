@@ -1732,5 +1732,11 @@
   "action": "auth-error",
   "item_id": null,
   "detail": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: Session has expired on Thursday, 05-Nov-26 06:00:00 PST. The current time is Thursday, 05-Nov-26 16:44:27 PST. (type=OAuthException, code=190, subcode=463)"
+ },
+ {
+  "t": "2026-11-06T02:58:31.621032+00:00",
+  "action": "auth-error",
+  "item_id": null,
+  "detail": "Graph API error 400 on POST 17841477100835322/media: Error validating access token: Session has expired on Thursday, 05-Nov-26 06:00:00 PST. The current time is Thursday, 05-Nov-26 18:58:31 PST. (type=OAuthException, code=190, subcode=463)"
  }
 ]
