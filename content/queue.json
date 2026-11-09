@@ -3229,7 +3229,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1107698182073470",
-    "yt_result_id": "gks0ym1axs4"
+    "yt_result_id": "gks0ym1axs4",
+    "reach": 118.0
   },
   {
     "id": "story-20261107T1100-4aa30b",
@@ -3240,7 +3241,8 @@
     "posted_at": "2026-11-07T17:09:22.895293+00:00",
     "result_id": "18121559288051691",
     "source_public_id": "Como_dreams_DIlGZ8xs2Cn",
-    "theme": "travel"
+    "theme": "travel",
+    "reach": 0.0
   },
   {
     "id": "sched-20261107T1200-4aa30b",
@@ -3254,7 +3256,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "4390723524513192",
-    "yt_result_id": "hgYrKC1z71U"
+    "yt_result_id": "hgYrKC1z71U",
+    "reach": 118.0
   },
   {
     "id": "sched-20261107T1430-26e500",
@@ -3268,7 +3271,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1084846771247269",
-    "yt_result_id": "ceWGjStACpk"
+    "yt_result_id": "ceWGjStACpk",
+    "reach": 154.0
   },
   {
     "id": "sched-20261107T2000-ee278f",
@@ -110876,7 +110880,8 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868679/Living_the_Old_Money_life_in_Monaco_C9CJq96MDbK.mp4",
     "fb_result_id": "1482339377079560",
     "yt_result_id": "aUq-Ll33C0U",
-    "theme": "travel"
+    "theme": "travel",
+    "reach": 117.0
   },
   {
     "id": "recycle-2026-11-06-f831a042d0bf",
@@ -110889,7 +110894,8 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868638/What_is_the_best_Old_Money_winter_destination_%EF%B8%8F_DA5ux6Js67C.mp4",
     "fb_result_id": "2097959087555188",
     "yt_result_id": "rLySEMTCd8s",
-    "theme": "travel"
+    "theme": "travel",
+    "reach": 140.0
   },
   {
     "id": "recycle-2026-11-06-f9ec4f661a1a",
@@ -110902,7 +110908,8 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868732/Perfection_C2w3yYBsfZr.mp4",
     "fb_result_id": "1851893612825875",
     "yt_result_id": "A5lBbB4G_PE",
-    "theme": "style"
+    "theme": "style",
+    "reach": 137.0
   },
   {
     "id": "recycle-2026-11-07-5dddb58470d1",
@@ -110915,6 +110922,7 @@
     "media_url": "https://res.cloudinary.com/o3dzubij/video/upload/v1788868675/Old_Money_Charm_in_the_Heart_of_Monaco_C99-k1bOMFj.mp4",
     "fb_result_id": "30200814452844389",
     "yt_result_id": "2IrPfq9zOXk",
-    "theme": "travel"
+    "theme": "travel",
+    "reach": 115.0
   }
 ]
