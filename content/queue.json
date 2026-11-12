@@ -3388,7 +3388,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1490826717441066",
-    "yt_result_id": "X0tN8YFHnBs"
+    "yt_result_id": "X0tN8YFHnBs",
+    "reach": 110.0
   },
   {
     "id": "story-20261109T1100-d8db04",
@@ -3399,7 +3400,8 @@
     "posted_at": "2026-11-09T23:29:53.850273+00:00",
     "result_id": "18376234255243210",
     "source_public_id": "Old_Money_style_never_shouts_\ufe0f_DCeXCK1sPtm",
-    "theme": "style"
+    "theme": "style",
+    "reach": 0.0
   },
   {
     "id": "sched-20261109T1200-d8db04",
@@ -3413,7 +3415,8 @@
     "theme": "style",
     "pass": 1,
     "fb_result_id": "1175014305195626",
-    "yt_result_id": "2ZUUerW6yhU"
+    "yt_result_id": "2ZUUerW6yhU",
+    "reach": 110.0
   },
   {
     "id": "sched-20261109T1430-bb18f4",
@@ -3427,7 +3430,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1764920081247922",
-    "yt_result_id": "18jhqdDKDgE"
+    "yt_result_id": "18jhqdDKDgE",
+    "reach": 116.0
   },
   {
     "id": "sched-20261109T1700-da428e",
@@ -3441,7 +3445,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1707357207599787",
-    "yt_result_id": "CKAU9IbAIus"
+    "yt_result_id": "CKAU9IbAIus",
+    "reach": 120.0
   },
   {
     "id": "sched-20261109T2000-2d235c",
@@ -3455,7 +3460,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1461220172603445",
-    "yt_result_id": "ZahfeECNupw"
+    "yt_result_id": "ZahfeECNupw",
+    "reach": 121.0
   },
   {
     "id": "sched-20261109T2300-222dff",
