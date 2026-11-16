@@ -3691,7 +3691,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1662625868922225",
-    "yt_result_id": "DtfMsXsz0P0"
+    "yt_result_id": "DtfMsXsz0P0",
+    "reach": 115.0
   },
   {
     "id": "story-20261113T1100-afc655",
@@ -3702,7 +3703,8 @@
     "posted_at": "2026-11-13T22:24:31.803650+00:00",
     "result_id": "18117956849010627",
     "source_public_id": "The_best_Old_Money_lifestyle_\ufe0f_DAgUhiGsAgC",
-    "theme": "style"
+    "theme": "style",
+    "reach": 0.0
   },
   {
     "id": "sched-20261113T1200-afc655",
@@ -3716,7 +3718,8 @@
     "theme": "style",
     "pass": 1,
     "fb_result_id": "1132062492520406",
-    "yt_result_id": "l-iCsXtC_Gg"
+    "yt_result_id": "l-iCsXtC_Gg",
+    "reach": 316.0
   },
   {
     "id": "sched-20261113T1430-e5b292",
@@ -3730,7 +3733,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "2166210844021845",
-    "yt_result_id": "_i33XrhNvJc"
+    "yt_result_id": "_i33XrhNvJc",
+    "reach": 111.0
   },
   {
     "id": "sched-20261113T1700-b0d447",
@@ -3744,7 +3748,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1817934376119254",
-    "yt_result_id": "n94hwgACa_o"
+    "yt_result_id": "n94hwgACa_o",
+    "reach": 137.0
   },
   {
     "id": "sched-20261113T2000-942c3b",
@@ -3758,7 +3763,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1135065645925838",
-    "yt_result_id": "8IzUN8nHSRo"
+    "yt_result_id": "8IzUN8nHSRo",
+    "reach": 123.0
   },
   {
     "id": "sched-20261113T2300-9ac6d3",
@@ -3772,7 +3778,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1142160538186835",
-    "yt_result_id": "Gsb6tsz-yFg"
+    "yt_result_id": "Gsb6tsz-yFg",
+    "reach": 106.0
   },
   {
     "id": "story-20261114T1100-cb1cb9",
