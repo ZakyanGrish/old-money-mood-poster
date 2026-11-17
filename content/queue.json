@@ -3790,7 +3790,8 @@
     "posted_at": "2026-11-14T23:37:28.458449+00:00",
     "result_id": "18179622604450865",
     "source_public_id": "Win_a_free_trip_to_Lake_Como_DJ_JtAGsiVb",
-    "theme": "travel"
+    "theme": "travel",
+    "reach": 0.0
   },
   {
     "id": "sched-20261114T1200-cb1cb9",
@@ -3804,7 +3805,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1147383577834819",
-    "yt_result_id": "exijpYpc5ME"
+    "yt_result_id": "exijpYpc5ME",
+    "reach": 1274.0
   },
   {
     "id": "sched-20261114T1430-3a8ca3",
@@ -3818,7 +3820,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1155237367140974",
-    "yt_result_id": "dCB9x26q_PU"
+    "yt_result_id": "dCB9x26q_PU",
+    "reach": 117.0
   },
   {
     "id": "sched-20261114T1700-523ec3",
@@ -3832,7 +3835,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1137364065952313",
-    "yt_result_id": "DC_2VTxCDbA"
+    "yt_result_id": "DC_2VTxCDbA",
+    "reach": 1147.0
   },
   {
     "id": "sched-20261114T2000-871ac6",
