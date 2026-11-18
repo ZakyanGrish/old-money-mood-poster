@@ -3850,7 +3850,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "2013124152698795",
-    "yt_result_id": "RGKhhPVOcNs"
+    "yt_result_id": "RGKhhPVOcNs",
+    "reach": 126.0
   },
   {
     "id": "sched-20261114T2300-b1774b",
@@ -3864,7 +3865,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "3078664399284648",
-    "yt_result_id": "H6NIZBDF8YY"
+    "yt_result_id": "H6NIZBDF8YY",
+    "reach": 116.0
   },
   {
     "id": "story-20261115T1100-4aa30b",
@@ -3875,7 +3877,8 @@
     "posted_at": "2026-11-16T02:29:47.444165+00:00",
     "result_id": "18137966953659143",
     "source_public_id": "Como_dreams_DIlGZ8xs2Cn",
-    "theme": "travel"
+    "theme": "travel",
+    "reach": 0.0
   },
   {
     "id": "sched-20261115T1430-4aa30b",
