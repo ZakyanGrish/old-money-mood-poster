@@ -3892,7 +3892,8 @@
     "theme": "travel",
     "pass": 2,
     "fb_result_id": "1809586546922319",
-    "yt_result_id": "h1hlzf03nrY"
+    "yt_result_id": "h1hlzf03nrY",
+    "reach": 128.0
   },
   {
     "id": "sched-20261115T1700-0d1503",
@@ -3906,7 +3907,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1633401210993033",
-    "yt_result_id": "FZSLfo3OVAg"
+    "yt_result_id": "FZSLfo3OVAg",
+    "reach": 14.0
   },
   {
     "id": "sched-20261115T2000-9b9bea",
@@ -3920,7 +3922,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1481814963897050",
-    "yt_result_id": "f-mD9DUHVSo"
+    "yt_result_id": "f-mD9DUHVSo",
+    "reach": 1728.0
   },
   {
     "id": "sched-20261115T2300-6a6dbd",
@@ -3934,7 +3937,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "29167437159603659",
-    "yt_result_id": "gglQ9DPk-Yw"
+    "yt_result_id": "gglQ9DPk-Yw",
+    "reach": 117.0
   },
   {
     "id": "story-20261116T1100-55dbe6",
@@ -3945,7 +3949,8 @@
     "posted_at": "2026-11-17T04:53:50.981840+00:00",
     "result_id": "17978703741149522",
     "source_public_id": "Wintersport_season_loading_DRmLufwiIlD",
-    "theme": "travel"
+    "theme": "travel",
+    "reach": 0.0
   },
   {
     "id": "sched-20261116T1200-55dbe6",
@@ -3959,7 +3964,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1549663143641965",
-    "yt_result_id": "o1dVLZBpmSY"
+    "yt_result_id": "o1dVLZBpmSY",
+    "reach": 112.0
   },
   {
     "id": "sched-20261116T1430-b83442",
