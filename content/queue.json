@@ -4195,7 +4195,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1080815961648214",
-    "yt_result_id": "5F92zbkxAFQ"
+    "yt_result_id": "5F92zbkxAFQ",
+    "reach": 132.0
   },
   {
     "id": "sched-20261119T2300-f6e9e6",
@@ -4209,7 +4210,8 @@
     "theme": "travel",
     "pass": 2,
     "fb_result_id": "1751662342589998",
-    "yt_result_id": "fRoVzULGIw8"
+    "yt_result_id": "fRoVzULGIw8",
+    "reach": 116.0
   },
   {
     "id": "story-20261120T1100-a509e7",
@@ -4220,7 +4222,8 @@
     "posted_at": "2026-11-21T01:04:53.001614+00:00",
     "result_id": "17957617965289390",
     "source_public_id": "Best_type_of_love_DH8Muy-s1Bj",
-    "theme": "romance"
+    "theme": "romance",
+    "reach": 0.0
   },
   {
     "id": "sched-20261120T1200-a509e7",
@@ -4234,7 +4237,8 @@
     "theme": "romance",
     "pass": 1,
     "fb_result_id": "1002191902933927",
-    "yt_result_id": "n4Klo_vC95c"
+    "yt_result_id": "n4Klo_vC95c",
+    "reach": 115.0
   },
   {
     "id": "sched-20261120T1430-147464",
@@ -4248,7 +4252,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "2649683775477148",
-    "yt_result_id": "H9yw1AWVShE"
+    "yt_result_id": "H9yw1AWVShE",
+    "reach": 128.0
   },
   {
     "id": "sched-20261120T1700-4d513f",
@@ -4262,7 +4267,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "1356036353206028",
-    "yt_result_id": "Q0ECrohOdr4"
+    "yt_result_id": "Q0ECrohOdr4",
+    "reach": 129.0
   },
   {
     "id": "sched-20261120T2000-cd51e5",
@@ -4276,7 +4282,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "2265273307715853",
-    "yt_result_id": "dQ6p1yUAi0Q"
+    "yt_result_id": "dQ6p1yUAi0Q",
+    "reach": 122.0
   },
   {
     "id": "sched-20261120T2300-d24473",
@@ -4290,7 +4297,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1484068840397857",
-    "yt_result_id": "a4AEVhEgL00"
+    "yt_result_id": "a4AEVhEgL00",
+    "reach": 119.0
   },
   {
     "id": "story-20261121T1100-7f833b",
