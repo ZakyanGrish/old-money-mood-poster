@@ -4309,7 +4309,8 @@
     "posted_at": "2026-11-22T02:45:24.822013+00:00",
     "result_id": "18148017754602864",
     "source_public_id": "The_Old_Money_Lifestyle_\ufe0f_C3SUvJoM2Z0",
-    "theme": "style"
+    "theme": "style",
+    "reach": 0.0
   },
   {
     "id": "sched-20261121T1430-7f833b",
@@ -4323,7 +4324,8 @@
     "theme": "style",
     "pass": 1,
     "fb_result_id": "1948603532768383",
-    "yt_result_id": "vsDZCCHn7Sc"
+    "yt_result_id": "vsDZCCHn7Sc",
+    "reach": 118.0
   },
   {
     "id": "sched-20261121T1700-bfe717",
@@ -4337,7 +4339,8 @@
     "theme": "style",
     "pass": 1,
     "fb_result_id": "1548344948362802",
-    "yt_result_id": "2pMlPYfJuBU"
+    "yt_result_id": "2pMlPYfJuBU",
+    "reach": 113.0
   },
   {
     "id": "sched-20261121T2300-561da0",
