@@ -4354,7 +4354,8 @@
     "theme": "legacy",
     "pass": 1,
     "fb_result_id": "2617148098793749",
-    "yt_result_id": "Twy3_IU2VME"
+    "yt_result_id": "Twy3_IU2VME",
+    "reach": 109.0
   },
   {
     "id": "story-20261122T1100-256609",
@@ -4365,7 +4366,8 @@
     "posted_at": "2026-11-23T03:23:16.868443+00:00",
     "result_id": "17947972272366746",
     "source_public_id": "Join_the_legacy_of_enduring_sophistication._C0t_x0XpUQl",
-    "theme": "legacy"
+    "theme": "legacy",
+    "reach": 0.0
   },
   {
     "id": "sched-20261122T1430-256609",
