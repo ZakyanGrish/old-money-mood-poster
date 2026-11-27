@@ -4468,7 +4468,8 @@
     "theme": "generic",
     "pass": 2,
     "fb_result_id": "3475963379278618",
-    "yt_result_id": "A7iqzYfjbUA"
+    "yt_result_id": "A7iqzYfjbUA",
+    "reach": 120.0
   },
   {
     "id": "sched-20261123T2000-8b32d0",
@@ -4482,7 +4483,8 @@
     "theme": "travel",
     "pass": 1,
     "fb_result_id": "1602648138332274",
-    "yt_result_id": "oCvmr8zS7MY"
+    "yt_result_id": "oCvmr8zS7MY",
+    "reach": 111.0
   },
   {
     "id": "story-20261124T1100-7a88b7",
@@ -4493,7 +4495,8 @@
     "posted_at": "2026-11-25T03:21:56.711791+00:00",
     "result_id": "18017925620776936",
     "source_public_id": "What_s_on_your_agenda_for_the_season_\ufe0f_C1pbxkaAiKh",
-    "theme": "generic"
+    "theme": "generic",
+    "reach": 0.0
   },
   {
     "id": "sched-20261124T1200-7a88b7",
@@ -4507,7 +4510,8 @@
     "theme": "generic",
     "pass": 1,
     "fb_result_id": "1454217116864939",
-    "yt_result_id": "6bf_-AUfB2s"
+    "yt_result_id": "6bf_-AUfB2s",
+    "reach": 120.0
   },
   {
     "id": "sched-20261124T1430-222dff",
@@ -4521,7 +4525,8 @@
     "theme": "travel",
     "pass": 2,
     "fb_result_id": "1571959258072028",
-    "yt_result_id": "vZPsoqdkpWU"
+    "yt_result_id": "vZPsoqdkpWU",
+    "reach": 114.0
   },
   {
     "id": "sched-20261124T1700-f5737e",
